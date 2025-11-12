@@ -33,12 +33,13 @@ public class meuvetor {
                         if (contarRodada == 1) {
                             System.out.println("\nÉ a vez do jogador 1: ");
                             System.out.println("Escolha um número!");
-                            int testeInput = sc.nextInt();
+                            int inputJogadorUm = sc.nextInt();
 
                             for (i = 0; i < matPadrao.length; i++) {
                                 for (j = 0; j < matPadrao[0].length; j++) {
-                                    if (testeInput == matPadrao[i][j]) {
-                                        matPadrao[i][j] = -1;
+                                    if (inputJogadorUm == matPadrao[i][j]) {
+                                        // A escolha do primeiro jogador é marcada com '0' na matriz
+                                        matPadrao[i][j] = 0;
                                     }
                                     System.out.print(matPadrao[i][j] + "  ");
                                 }
@@ -49,11 +50,12 @@ public class meuvetor {
                         } else {
                             System.out.println("\nÉ a vez do jogador 2: ");
                             System.out.println("\nEscolha um número!");
-                            int testeInput = sc.nextInt();
+                            int inputJogadorDois = sc.nextInt();
 
                             for (i = 0; i < matPadrao.length; i++) {
                                 for (j = 0; j < matPadrao[0].length; j++) {
-                                    if (testeInput == matPadrao[i][j]) {
+                                    if (inputJogadorDois == matPadrao[i][j]) {
+                                        // A escolha do segundo jogador é marcada com '-1' na matriz
                                         matPadrao[i][j] = -1;
                                     }
                                     System.out.print(matPadrao[i][j] + "  ");
