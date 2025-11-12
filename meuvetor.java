@@ -133,7 +133,7 @@ public class meuvetor {
                                 System.out.println(" ");
                             }
                         }
-                        //////////
+                        ///// Verificando se alguém venceu a partida /////
                         if (matPadrao[0][0] == 0 && matPadrao[0][1] == 0 && matPadrao[0][2] == 0) {
                             jogoEncerrado = true;
                             System.out.println("@@@@@@@@ Jogador 1 venceu! @@@@@@@@");
@@ -202,9 +202,7 @@ public class meuvetor {
                         ///
                     }
                 }
-
                 System.out.println("===================");
-
             }
         }
         sc.close();
