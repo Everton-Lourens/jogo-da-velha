@@ -15,7 +15,7 @@ public class meuvetor {
         };
 
         int matT[][] = new int[3][3];
-        int i, j, pontuacao = 0;
+        int i, j, x, y, pontuacao = 0;
         // Controle de rodada
         int contarRodada = 1;
 
@@ -23,48 +23,35 @@ public class meuvetor {
         System.out.println("........... REGRAS ...........");
         System.out.println("- Cada jogador terá sua vez de jogar.");
         System.out.println("========================");
+        System.out.println("É a vez do primeiro jogador, comece a jogar!");
+        System.out.println("Escolha um número!");
 
         for (i = 0; i < matPadrao.length; i++) {
             for (j = 0; j < matPadrao[0].length; j++) {
 
                 for (i = 0; i < matPadrao.length; i++) {
                     for (j = 0; j < matPadrao[0].length; j++) {
-
-                        if (contarRodada == 1) {
-                            System.out.println("\nÉ a vez do jogador 1: ");
-                            System.out.println("Escolha um número!");
+                            ////////////////
+                            // if (contarRodada == 1) {
                             int inputJogadorUm = sc.nextInt();
 
-                            for (i = 0; i < matPadrao.length; i++) {
-                                for (j = 0; j < matPadrao[0].length; j++) {
-                                    if (inputJogadorUm == matPadrao[i][j]) {
+                            for (x = 0; x < matPadrao.length; x++) {
+                                for (y = 0; y < matPadrao[0].length; y++) {
+                                    if (inputJogadorUm == matPadrao[x][y]) {
                                         // A escolha do primeiro jogador é marcada com '0' na matriz
-                                        matPadrao[i][j] = 0;
+                                        matPadrao[x][y] = 0;
                                     }
-                                    System.out.print(matPadrao[i][j] + "  ");
+                                    System.out.print(matPadrao[x][y] + "  ");
                                 }
                                 System.out.println(" ");
                             }
-                            // Passa a vez para o jogador 2
-                            contarRodada = 2;
-                        } else {
-                            System.out.println("\nÉ a vez do jogador 2: ");
-                            System.out.println("\nEscolha um número!");
-                            int inputJogadorDois = sc.nextInt();
 
-                            for (i = 0; i < matPadrao.length; i++) {
-                                for (j = 0; j < matPadrao[0].length; j++) {
-                                    if (inputJogadorDois == matPadrao[i][j]) {
-                                        // A escolha do segundo jogador é marcada com '-1' na matriz
-                                        matPadrao[i][j] = -1;
-                                    }
-                                    System.out.print(matPadrao[i][j] + "  ");
-                                }
-                                System.out.println(" ");
-                            }
-                            // Passa a vez para o jogador 1
-                            contarRodada = 1;
-                        }
+                            // Passa a vez para o jogador 2
+                            // contarRodada = 2;
+                            // }
+                            /// //////////
+
+
                     }
                 }
 
