@@ -25,7 +25,7 @@ public class meuvetor {
                     for (j = 0; j < matA[0].length; j++) {
 
                         if (contarRodada == 1) {
-                            System.out.println("\n\nÉ a vez do jogador 1: ");
+                            System.out.println("\nÉ a vez do jogador 1: ");
                             if (sc.nextInt() == 0) {
                                 matT[i][j] = 0;
                             } else {
@@ -33,8 +33,12 @@ public class meuvetor {
                             }
                             contarRodada = 2;
                         } else {
-                            System.out.println("\n\nÉ a vez do jogador 2: ");
-
+                            System.out.println("\nÉ a vez do jogador 2: ");
+                            if (sc.nextInt() == 0) {
+                                matT[i][j] = 0;
+                            } else {
+                                matT[i][j] = 1;
+                            }
                             contarRodada = 1;
                         }
                     }
