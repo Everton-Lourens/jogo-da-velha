@@ -38,6 +38,14 @@ public class meuvetor {
                             } else {
                                 matT[i][j] = 1;
                             }
+                            /////////////
+                            for (i = 0; i < matPadrao.length; i++) {
+                                for (j = 0; j < matPadrao[0].length; j++) {
+                                    System.out.print(matPadrao[i][j] + "  ");
+                                }
+                                System.out.println(" ");
+                            }
+                            /////////////
                             // Passa a vez para o jogador 2
                             contarRodada = 2;
                         } else {
