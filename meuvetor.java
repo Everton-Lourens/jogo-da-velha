@@ -8,14 +8,6 @@ public class meuvetor {
         // Inicializando scanner
         Scanner sc = new Scanner(System.in);
         // Inicializando matriz padrão do jogo para o jogador escolher os números
-        /*
-         * int matPadrao[][] = {
-         * { 1, 2, 3 },
-         * { 4, 5, 6 },
-         * { 7, 8, 9 }
-         * };
-         */
-
         int matPadrao[][] = {
                 { 1, 2, 3 },
                 { 4, 5, 6 },
@@ -30,13 +22,13 @@ public class meuvetor {
         System.out.println("======== Jogo da Velha ========");
         System.out.println("........... REGRAS ...........");
         System.out.println("- Cada jogador terá sua vez de jogar.");
-        System.out.println("========================");
         for (x = 0; x < matPadrao.length; x++) {
             for (y = 0; y < matPadrao[0].length; y++) {
                 System.out.print(matPadrao[x][y] + "  ");
             }
             System.out.println(" ");
         }
+        System.out.println("========================");
 
         for (i = 0; i < matPadrao.length; i++) {
             for (j = 0; j < matPadrao[0].length; j++) {
@@ -44,6 +36,8 @@ public class meuvetor {
                 for (i = 0; i < matPadrao.length; i++) {
                     for (j = 0; j < matPadrao[0].length; j++) {
 
+                        // Conferindo se o jogo já foi encerrado (deu velha ou não resta opções para
+                        // jogar)
                         if (jogoEncerrado == true) {
                             System.out.println("Jogo encerrado! Não há mais jogadas possíveis.");
                             i = matPadrao.length;
@@ -52,15 +46,20 @@ public class meuvetor {
                             break;
                         }
 
+                        // Inicia a variável como verdadeira para conferir se há números restantes na
+                        // matriz
                         jogoEncerrado = true;
                         for (t = 0; t < matPadrao.length; t++) {
                             for (k = 0; k < matPadrao[0].length; k++) {
                                 if (matPadrao[t][k] > 0) {
+                                    // Se houver algum número positivo, significa que ainda existe opções para jogar
+                                    // e o jogo não pode ser encerrado
                                     jogoEncerrado = false;
                                 }
                             }
                         }
 
+                        // Jogador 1 faz sua jogada
                         if (contarRodada == 1) {
                             System.out.println("========================");
                             System.out.println("É a vez do jogador 1! (X)");
@@ -97,6 +96,7 @@ public class meuvetor {
                                 System.out.println(" ");
                             }
 
+                        // Jogador 2 faz sua jogada
                         } else {
                             System.out.println("========================");
                             System.out.println("É a vez do jogador 2! (O)");
