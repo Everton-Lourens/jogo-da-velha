@@ -22,7 +22,7 @@ public class meuvetor {
                 { 7, 8, 9 }
         };
 
-        int i, j, x, y;
+        int i, j, x, y, t, k;
         boolean jogoEncerrado = false;
         // Controle de rodada
         int contarRodada = 1;
@@ -52,6 +52,15 @@ public class meuvetor {
                             break;
                         }
 
+                        jogoEncerrado = true;
+                        for (t = 0; t < matPadrao.length; t++) {
+                            for (k = 0; k < matPadrao[0].length; k++) {
+                                if (matPadrao[t][k] > 0) {
+                                    jogoEncerrado = false;
+                                }
+                            }
+                        }
+
                         if (contarRodada == 1) {
                             System.out.println("========================");
                             System.out.println("É a vez do jogador 1! (X)");
@@ -73,7 +82,6 @@ public class meuvetor {
                                         i--;
                                         j--;
                                     }
-                                    jogoEncerrado = true;
                                     if (matPadrao[x][y] == 0) {
                                         // Se a matriz tiver algum número '0', marca 'X' para indicar o jogador 1
                                         System.out.print("X" + "  ");
@@ -84,7 +92,6 @@ public class meuvetor {
                                         // Senão, mostra apenas os números restantes na matriz para os jogadores
                                         // escolherem
                                         System.out.print(matPadrao[x][y] + "  ");
-                                        jogoEncerrado = false;
                                     }
                                 }
                                 System.out.println(" ");
@@ -111,7 +118,6 @@ public class meuvetor {
                                         i--;
                                         j--;
                                     }
-                                    jogoEncerrado = true;
                                     if (matPadrao[x][y] == 0) {
                                         // Se a matriz tiver algum número '0', marca 'X' para indicar o jogador 1
                                         System.out.print("X" + "  ");
@@ -122,7 +128,6 @@ public class meuvetor {
                                         // Senão, mostra apenas os números restantes na matriz para os jogadores
                                         // escolherem
                                         System.out.print(matPadrao[x][y] + "  ");
-                                        jogoEncerrado = false;
                                     }
                                 }
                                 System.out.println(" ");
@@ -131,68 +136,68 @@ public class meuvetor {
                         //////////
                         if (matPadrao[0][0] == 0 && matPadrao[0][1] == 0 && matPadrao[0][2] == 0) {
                             jogoEncerrado = true;
-                            System.out.println("Jogador 1 venceu!");
+                            System.out.println("@@@@@@@@ Jogador 1 venceu! @@@@@@@@");
                         }
                         if (matPadrao[1][0] == 0 && matPadrao[1][1] == 0 && matPadrao[1][2] == 0) {
                             jogoEncerrado = true;
-                            System.out.println("Jogador 1 venceu!");
+                            System.out.println("@@@@@@@@ Jogador 1 venceu! @@@@@@@@");
                         }
                         if (matPadrao[2][0] == 0 && matPadrao[2][1] == 0 && matPadrao[2][2] == 0) {
                             jogoEncerrado = true;
-                            System.out.println("Jogador 1 venceu!");
+                            System.out.println("@@@@@@@@ Jogador 1 venceu! @@@@@@@@");
                         }
                         if (matPadrao[0][0] == 0 && matPadrao[1][0] == 0 && matPadrao[2][0] == 0) {
                             jogoEncerrado = true;
-                            System.out.println("Jogador 1 venceu!");
+                            System.out.println("@@@@@@@@ Jogador 1 venceu! @@@@@@@@");
                         }
                         if (matPadrao[0][1] == 0 && matPadrao[1][1] == 0 && matPadrao[2][1] == 0) {
                             jogoEncerrado = true;
-                            System.out.println("Jogador 1 venceu!");
+                            System.out.println("@@@@@@@@ Jogador 1 venceu! @@@@@@@@");
                         }
                         if (matPadrao[0][2] == 0 && matPadrao[1][2] == 0 && matPadrao[2][2] == 0) {
                             jogoEncerrado = true;
-                            System.out.println("Jogador 1 venceu!");
+                            System.out.println("@@@@@@@@ Jogador 1 venceu! @@@@@@@@");
                         }
                         if (matPadrao[0][0] == 0 && matPadrao[1][1] == 0 && matPadrao[2][2] == 0) {
                             jogoEncerrado = true;
-                            System.out.println("Jogador 1 venceu!");
+                            System.out.println("@@@@@@@@ Jogador 1 venceu! @@@@@@@@");
                         }
                         if (matPadrao[0][2] == 0 && matPadrao[1][1] == 0 && matPadrao[2][0] == 0) {
                             jogoEncerrado = true;
-                            System.out.println("Jogador 1 venceu!");
+                            System.out.println("@@@@@@@@ Jogador 1 venceu! @@@@@@@@");
                         }
                         //////////
                         if (matPadrao[0][0] == -1 && matPadrao[0][1] == -1 && matPadrao[0][2] == -1) {
                             jogoEncerrado = true;
-                            System.out.println("Jogador 2 venceu!");
+                            System.out.println("@@@@@@@@ Jogador 2 venceu! @@@@@@@@");
                         }
                         if (matPadrao[1][0] == -1 && matPadrao[1][1] == -1 && matPadrao[1][2] == -1) {
                             jogoEncerrado = true;
-                            System.out.println("Jogador 2 venceu!");
+                            System.out.println("@@@@@@@@ Jogador 2 venceu! @@@@@@@@");
                         }
                         if (matPadrao[2][0] == -1 && matPadrao[2][1] == -1 && matPadrao[2][2] == -1) {
                             jogoEncerrado = true;
-                            System.out.println("Jogador 2 venceu!");
+                            System.out.println("@@@@@@@@ Jogador 2 venceu! @@@@@@@@");
                         }
                         if (matPadrao[0][0] == -1 && matPadrao[1][0] == -1 && matPadrao[2][0] == -1) {
                             jogoEncerrado = true;
-                            System.out.println("Jogador 2 venceu!");
+                            System.out.println("@@@@@@@@ Jogador 2 venceu! @@@@@@@@");
                         }
                         if (matPadrao[0][1] == -1 && matPadrao[1][1] == -1 && matPadrao[2][1] == -1) {
                             jogoEncerrado = true;
-                            System.out.println("Jogador 2 venceu!");
+                            System.out.println("@@@@@@@@ Jogador 2 venceu! @@@@@@@@");
                         }
                         if (matPadrao[0][2] == -1 && matPadrao[1][2] == -1 && matPadrao[2][2] == -1) {
                             jogoEncerrado = true;
-                            System.out.println("Jogador 2 venceu!");
+                            System.out.println("@@@@@@@@ Jogador 2 venceu! @@@@@@@@");
                         }
                         if (matPadrao[0][0] == -1 && matPadrao[1][1] == -1 && matPadrao[2][2] == -1) {
                             jogoEncerrado = true;
-                            System.out.println("Jogador 2 venceu!");
+                            System.out.println("@@@@@@@@ Jogador 2 venceu! @@@@@@@@");
                         }
                         if (matPadrao[0][2] == -1 && matPadrao[1][1] == -1 && matPadrao[2][0] == -1) {
                             jogoEncerrado = true;
-                            System.out.println("Jogador 2 venceu!");
+                            System.out.println("@@@@@@@@ Jogador 2 venceu! @@@@@@@@");
                         }
                         ///
                     }
