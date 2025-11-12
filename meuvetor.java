@@ -32,15 +32,15 @@ public class meuvetor {
 
                         if (contarRodada == 1) {
                             System.out.println("\nÉ a vez do jogador 1: ");
-                            System.out.println("\nEscolha um número!");
-                            if (sc.nextInt() == 0) {
-                                matT[i][j] = 0;
-                            } else {
-                                matT[i][j] = 1;
-                            }
+                            System.out.println("Escolha um número!");
+                            int testeInput = sc.nextInt();
+
                             /////////////
                             for (i = 0; i < matPadrao.length; i++) {
                                 for (j = 0; j < matPadrao[0].length; j++) {
+                                    if (testeInput == matPadrao[i][j]) {
+                                        matPadrao[i][j] = 0;
+                                    }
                                     System.out.print(matPadrao[i][j] + "  ");
                                 }
                                 System.out.println(" ");
