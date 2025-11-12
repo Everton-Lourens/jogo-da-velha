@@ -16,6 +16,7 @@ public class meuvetor {
 
         int matT[][] = new int[3][3];
         int i, j, pontuacao = 0;
+        // Controle de rodada
         int contarRodada = 1;
 
         System.out.println("======== Jogo da Velha ========");
@@ -37,6 +38,7 @@ public class meuvetor {
                             } else {
                                 matT[i][j] = 1;
                             }
+                            // Passa a vez para o jogador 2
                             contarRodada = 2;
                         } else {
                             System.out.println("\nÉ a vez do jogador 2: ");
@@ -46,6 +48,7 @@ public class meuvetor {
                             } else {
                                 matT[i][j] = 1;
                             }
+                            // Passa a vez para o jogador 1
                             contarRodada = 1;
                         }
                     }
