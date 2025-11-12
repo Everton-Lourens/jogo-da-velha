@@ -6,7 +6,6 @@ public class meuvetor {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        // int matA[][] = new int[3][3];
 
         int matA[][] = {
                 { 1, 0, 1 },
