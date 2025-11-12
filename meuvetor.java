@@ -39,18 +39,21 @@ public class meuvetor {
 
                         if (contarRodada == 1) {
                             System.out.println("========================");
-                            System.out.println("É a vez do jogador 1!");
+                            System.out.println("É a vez do jogador 1! (X)");
                             System.out.println("Escolha um número!");
                             int inputJogadorUm = sc.nextInt();
 
                             for (x = 0; x < matPadrao.length; x++) {
                                 for (y = 0; y < matPadrao[0].length; y++) {
+                                    // Se o input do jogador 1 for igual ao número da matriz, coloca '0' para marcar a posição escolhida
                                     if (inputJogadorUm == matPadrao[x][y]) {
                                         // A escolha do primeiro jogador é marcada com '0' na matriz
                                         matPadrao[x][y] = 0;
                                         // Passa a vez para o jogador 2 caso o jogador 1 escolha um número válido
                                         contarRodada = 2;
                                     } else {
+                                        // Não permite o jogo encerrar caso o jogador escolha um número inválido ou uma
+                                        // letra
                                         i--;
                                         j--;
                                     }
@@ -67,26 +70,32 @@ public class meuvetor {
 
                         } else {
                             System.out.println("========================");
-                            System.out.println("É a vez do jogador 2!");
+                            System.out.println("É a vez do jogador 2! (O)");
                             System.out.println("Escolha um número!");
                             int inputJogadorDois = sc.nextInt();
 
                             for (x = 0; x < matPadrao.length; x++) {
                                 for (y = 0; y < matPadrao[0].length; y++) {
+                                    // Se o input do jogador 2 for igual ao número da matriz, coloca '-1' para marcar a posição escolhida
                                     if (inputJogadorDois == matPadrao[x][y]) {
                                         // A escolha do primeiro jogador é marcada com '-1' na matriz
                                         matPadrao[x][y] = -1;
                                         // Passa a vez para o jogador 1 caso o jogador 2 escolha um número válido
                                         contarRodada = 1;
                                     } else {
+                                        // Não permite o jogo encerrar caso o jogador escolha um número inválido ou uma
+                                        // letra
                                         i--;
                                         j--;
                                     }
                                     if (matPadrao[x][y] == 0) {
+                                    // Se a matriz tiver algum número '0', marca 'X' para indicar o jogador 1
                                         System.out.print("X" + "  ");
                                     } else if (matPadrao[x][y] == -1) {
+                                    // Se a matriz tiver algum número '-1', marca 'O' para indicar o jogador 2
                                         System.out.print("O" + "  ");
                                     } else {
+                                    // Senão, mostra apenas os números restantes na matriz para os jogadores escolherem
                                         System.out.print(matPadrao[x][y] + "  ");
                                     }
                                 }
