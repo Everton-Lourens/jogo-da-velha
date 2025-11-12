@@ -18,6 +18,11 @@ public class meuvetor {
         int i, j, pontuacao = 0;
         int contarRodada = 1;
 
+        System.out.println("======== Jogo da Velha ========");
+        System.out.println("........... Regras: ...........");
+        System.out.println("- Cada jogador terá sua vez de jogar.");
+        System.out.println("========================");
+
         for (i = 0; i < matA.length; i++) {
             for (j = 0; j < matA[0].length; j++) {
 
