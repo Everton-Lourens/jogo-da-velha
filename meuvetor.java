@@ -58,10 +58,13 @@ public class meuvetor {
                                         j--;
                                     }
                                     if (matPadrao[x][y] == 0) {
+                                    // Se a matriz tiver algum número '0', marca 'X' para indicar o jogador 1
                                         System.out.print("X" + "  ");
                                     } else if (matPadrao[x][y] == -1) {
+                                    // Se a matriz tiver algum número '-1', marca 'O' para indicar o jogador 2
                                         System.out.print("O" + "  ");
                                     } else {
+                                    // Senão, mostra apenas os números restantes na matriz para os jogadores escolherem
                                         System.out.print(matPadrao[x][y] + "  ");
                                     }
                                 }
