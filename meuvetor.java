@@ -23,16 +23,24 @@ public class meuvetor {
         System.out.println("........... REGRAS ...........");
         System.out.println("- Cada jogador terá sua vez de jogar.");
         System.out.println("========================");
-        System.out.println("É a vez do primeiro jogador, comece a jogar!");
-        System.out.println("Escolha um número!");
+
+        for (x = 0; x < matPadrao.length; x++) {
+            for (y = 0; y < matPadrao[0].length; y++) {
+                System.out.print(matPadrao[x][y] + "  ");
+            }
+            System.out.println(" ");
+        }
 
         for (i = 0; i < matPadrao.length; i++) {
             for (j = 0; j < matPadrao[0].length; j++) {
 
                 for (i = 0; i < matPadrao.length; i++) {
                     for (j = 0; j < matPadrao[0].length; j++) {
-                            ////////////////
-                            // if (contarRodada == 1) {
+
+                        if (contarRodada == 1) {
+                            System.out.println("========================");
+                            System.out.println("É a vez do jogador 1!");
+                            System.out.println("Escolha um número!");
                             int inputJogadorUm = sc.nextInt();
 
                             for (x = 0; x < matPadrao.length; x++) {
@@ -40,18 +48,51 @@ public class meuvetor {
                                     if (inputJogadorUm == matPadrao[x][y]) {
                                         // A escolha do primeiro jogador é marcada com '0' na matriz
                                         matPadrao[x][y] = 0;
+                                        // Passa a vez para o jogador 2 caso o jogador 1 escolha um número válido
+                                        contarRodada = 2;
+                                    } else {
+                                        i--;
+                                        j--;
                                     }
-                                    System.out.print(matPadrao[x][y] + "  ");
+                                    if (matPadrao[x][y] == 0) {
+                                        System.out.print("X" + "  ");
+                                    } else if (matPadrao[x][y] == -1) {
+                                        System.out.print("O" + "  ");
+                                    } else {
+                                        System.out.print(matPadrao[x][y] + "  ");
+                                    }
                                 }
                                 System.out.println(" ");
                             }
 
-                            // Passa a vez para o jogador 2
-                            // contarRodada = 2;
-                            // }
-                            /// //////////
+                        } else {
+                            System.out.println("========================");
+                            System.out.println("É a vez do jogador 2!");
+                            System.out.println("Escolha um número!");
+                            int inputJogadorDois = sc.nextInt();
 
-
+                            for (x = 0; x < matPadrao.length; x++) {
+                                for (y = 0; y < matPadrao[0].length; y++) {
+                                    if (inputJogadorDois == matPadrao[x][y]) {
+                                        // A escolha do primeiro jogador é marcada com '-1' na matriz
+                                        matPadrao[x][y] = -1;
+                                        // Passa a vez para o jogador 1 caso o jogador 2 escolha um número válido
+                                        contarRodada = 1;
+                                    } else {
+                                        i--;
+                                        j--;
+                                    }
+                                    if (matPadrao[x][y] == 0) {
+                                        System.out.print("X" + "  ");
+                                    } else if (matPadrao[x][y] == -1) {
+                                        System.out.print("O" + "  ");
+                                    } else {
+                                        System.out.print(matPadrao[x][y] + "  ");
+                                    }
+                                }
+                                System.out.println(" ");
+                            }
+                        }
                     }
                 }
 
