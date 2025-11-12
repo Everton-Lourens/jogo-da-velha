@@ -1,3 +1,6 @@
+// Aluno: Everton Lourenço da Silva (Apenas eu)
+// Matrícula: 200040212
+
 //package vetores;
 
 import java.util.Scanner;
@@ -96,7 +99,7 @@ public class meuvetor {
                                 System.out.println(" ");
                             }
 
-                        // Jogador 2 faz sua jogada
+                            // Jogador 2 faz sua jogada
                         } else {
                             System.out.println("========================");
                             System.out.println("É a vez do jogador 2! (O)");
