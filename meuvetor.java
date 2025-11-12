@@ -16,20 +16,26 @@ public class meuvetor {
 
         int matT[][] = new int[3][3];
         int i, j, pontuacao = 0;
-        int inputNumber;
+        int contarRodada = 1;
 
         for (i = 0; i < matA.length; i++) {
             for (j = 0; j < matA[0].length; j++) {
 
-                System.out.println("\n\nJOGUE: ");
-
                 for (i = 0; i < matA.length; i++) {
                     for (j = 0; j < matA[0].length; j++) {
 
-                        if (sc.nextInt() == 0) {
-                            matT[i][j] = 0;
+                        if (contarRodada == 1) {
+                            System.out.println("\n\nÉ a vez do jogador 1: ");
+                            if (sc.nextInt() == 0) {
+                                matT[i][j] = 0;
+                            } else {
+                                matT[i][j] = 1;
+                            }
+                            contarRodada = 2;
                         } else {
-                            matT[i][j] = 1;
+                            System.out.println("\n\nÉ a vez do jogador 2: ");
+
+                            contarRodada = 1;
                         }
                     }
                 }
