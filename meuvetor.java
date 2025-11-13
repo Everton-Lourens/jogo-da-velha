@@ -51,7 +51,7 @@ public class meuvetor {
                 { 0, 0, 0, 1, 0 },
                 { 0, 0, 1, 0, 0 },
                 { 0, 1, 0, 0, 0 },
-                { 1, 1, 0, 0, 0 },
+                { 1, 0, 0, 0, 0 },
         };
 
         int i, j, x, y, t, k, l, m;
@@ -95,9 +95,9 @@ public class meuvetor {
                     identidade = false;
                     break;
                 }
-                System.out.println((mat[l][totalMat] != 1 && mat[l][m] == 1));
                 if (l != m && identidade == true) {
-                    if (mat[l][totalMat] != 1 && mat[l][m] == 1) {
+                System.out.println((mat[m][l] == 1 && mat[l][totalMat] != 1));
+                    if ((mat[m][l] != 0 && mat[l][totalMat] == 1)) {
                         System.out.println("NÃO É !! @@@@@@@@@@@@@@@@@@ 3333::: " + mat[l][m] + " - " + l + "," + m);
                         identidade = false;
                         break;
