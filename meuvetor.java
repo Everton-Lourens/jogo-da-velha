@@ -47,11 +47,11 @@ public class meuvetor {
         };
 
         int mat[][] = {
-                { 0, 0, 0, 0, 1 },
-                { 0, 0, 0, 1, 0 },
-                { 0, 0, 1, 0, 0 },
-                { 0, 1, 0, 0, 0 },
                 { 1, 0, 0, 0, 0 },
+                { 0, 1, 0, 0, 0 },
+                { 0, 0, 1, 0, 0 },
+                { 0, 0, 0, 1, 0 },
+                { 0, 0, 0, 0, 1 },
         };
 
         int i, j, x, y, t, k, l, m;
@@ -63,49 +63,47 @@ public class meuvetor {
         System.out.println("........... REGRAS ...........");
         System.out.println("- Cada jogador terá sua vez de jogar.");
         boolean identidade = true;
-        /*
-         * for (l = 0; l < 5; l++) {
-         * for (m = 0; m < 5; m++) {
-         * if (mat[l][l] == 1) {
-         * System.out.println(mat[l][l] + " - " + l + "," + l);
-         * identidade = true;
-         * } else {
-         * identidade = false;
-         * break;
-         * }
-         * if (l != m && identidade == true) {
-         * if (mat[l][m] != 0) {
-         * identidade = false;
-         * break;
-         * } else {
-         * identidade = true;
-         * }
-         * } else {
-         * break;
-         * }
-         * }
-         * }
-         */
 
-        int totalMat = (mat.length - 1);
-        for (l = 0; l < mat.length; l++) {
-            for (m = 0; m < mat.length; m++) {
-                if (mat[l][totalMat] != 1) {
-                    System.out.println("NÃO É !! @@@@@@@@@@@@@@@@@@ 1111");
+
+        for (l = 0; l < 5; l++) {
+            for (m = 0; m < 5; m++) {
+                if (mat[l][l] != 1) {
                     identidade = false;
                     break;
                 }
                 if (l != m && identidade == true) {
-                System.out.println((mat[m][l] == 1 && mat[l][totalMat] != 1));
-                    if ((mat[m][l] != 0 && mat[l][totalMat] == 1)) {
-                        System.out.println("NÃO É !! @@@@@@@@@@@@@@@@@@ 3333::: " + mat[l][m] + " - " + l + "," + m);
+                    if (mat[l][m] != 0) {
                         identidade = false;
                         break;
                     }
+                } else {
+                    break;
                 }
             }
-            totalMat--;
         }
+
+        /*
+         * int totalMat = (mat.length - 1);
+         * for (l = 0; l < mat.length; l++) {
+         * for (m = 0; m < mat.length; m++) {
+         * if (mat[l][totalMat] != 1) {
+         * System.out.println("NÃO É !! @@@@@@@@@@@@@@@@@@ 1111");
+         * identidade = false;
+         * break;
+         * }
+         * if (l != m && identidade == true) {
+         * System.out.println((mat[m][l] == 1 && mat[l][totalMat] != 1));
+         * if ((mat[m][l] != 0 && mat[l][totalMat] == 1)) {
+         * System.out.println("NÃO É !! @@@@@@@@@@@@@@@@@@ 3333::: " + mat[l][m] + " - "
+         * + l + "," + m);
+         * identidade = false;
+         * break;
+         * }
+         * }
+         * }
+         * totalMat--;
+         * }
+         */
         /*
          * 1 - 0 4
          * 1 - 1 3
