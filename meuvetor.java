@@ -34,8 +34,10 @@ public class meuvetor {
                 { 0, 1, 0, 0, 0 },
                 { 1, 0, 0, 0, 0 },
         };
-        identidade = checkDireitaEsquerda(mat);
         identidade = checkEsquerdaDireita(mat);
+        if (identidade == false) {
+            identidade = checkDireitaEsquerda(mat);
+        }
 
         if (identidade == false) {
             System.out.println("\n@@@@@@@ NÃO é identidade!");
