@@ -36,6 +36,7 @@ public class meuvetor {
                 { 1, 0, 0, 0, 0 },
         };
 
+        // Confere se é identidade pela diagonal da direita para a esquerda, de cima para baixo
         for (int i = 0; i < mat.length; i++) {
             for (int j = mat[0].length - 1; j >= 0; j--) {
 
@@ -50,17 +51,16 @@ public class meuvetor {
             }
         }
 
+        // Confere se é identidade pela diagonal da esquerda para a direita, de cima para baixo
         for (int i = 0; i < mat.length; i++) {
             for (int j = 0; j < mat[0].length; j++) {
 
                 if ((i == j) && (mat[i][j] != 1)) {
-                    // identidade = false;
-                    break;
+                    identidade = false;
                 }
 
                 if ((i != j) && (mat[i][j] != 0)) {
-                    // identidade = false;
-                    break;
+                    identidade = false;
                 }
             }
         }
