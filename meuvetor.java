@@ -69,14 +69,6 @@ public class meuvetor {
                 { 7, 8, 9 }
         };
 
-        int mat[][] = {
-                { 1, 0, 0, 0, 0 },
-                { 0, 1, 0, 0, 0 },
-                { 0, 0, 1, 0, 0 },
-                { 0, 0, 0, 1, 0 },
-                { 0, 0, 0, 0, 1 },
-        };
-
         int i, j, x, y, t, k;
         // Controle de rodada
         int contarRodada = 1;
@@ -195,9 +187,13 @@ public class meuvetor {
                             }
                         }
 
-                        jogoEncerrado = checkDireitaEsquerda(mat);
+                        jogoEncerrado = checkEsquerdaDireita(matPadrao);
+                        System.out.println("jogoEncerrado 111 ?");
+                        System.out.println(jogoEncerrado);
                         if (jogoEncerrado == false) {
-                            jogoEncerrado = checkEsquerdaDireita(mat);
+                            jogoEncerrado = checkDireitaEsquerda(matPadrao);
+                            System.out.println("jogoEncerrado 22222 ?");
+                            System.out.println(jogoEncerrado);
                         }
 
                     }
