@@ -57,19 +57,16 @@ public class meuvetor {
     public static void main(String[] args) {
         // Inicializando scanner
         Scanner sc = new Scanner(System.in);
+        System.out.println("======== Jogo da Velha ========");
+        System.out.println("........... REGRAS ...........");
+        System.out.println("- Cada jogador terá sua vez de jogar.");
+        System.out.println("========================");
+
         // Inicializando matriz padrão do jogo para o jogador escolher os números
         int matPadrao[][] = {
                 { 1, 2, 3 },
                 { 4, 5, 6 },
                 { 7, 8, 9 }
-        };
-
-        int mat2[][] = {
-                { 1, 0, 0, 0, 3 },
-                { 0, 1, 0, 0, 0 },
-                { 0, 0, 1, 0, 0 },
-                { 0, 0, 0, 1, 0 },
-                { 0, 0, 0, 0, 1 },
         };
 
         int mat[][] = {
@@ -80,28 +77,20 @@ public class meuvetor {
                 { 0, 0, 0, 0, 1 },
         };
 
-        int i, j, x, y, t, k, l, m;
-        boolean jogoEncerrado = false;
+        int i, j, x, y, t, k;
         // Controle de rodada
         int contarRodada = 1;
+        boolean jogoEncerrado = false;
 
-        System.out.println("======== Jogo da Velha ========");
-        System.out.println("........... REGRAS ...........");
-        System.out.println("- Cada jogador terá sua vez de jogar.");
-        boolean identidade = checkDireitaEsquerda(mat);
-        if (identidade == false) {
-            identidade = checkEsquerdaDireita(mat);
-        }
-
-        System.out.println("========================");
-
+        // Mostrando a matriz padrão para os jogadores escolherem os números
         for (x = 0; x < matPadrao.length; x++) {
             for (y = 0; y < matPadrao[0].length; y++) {
                 System.out.print(matPadrao[x][y] + "  ");
             }
             System.out.println(" ");
-        }
+        } // Encerra a exibição
 
+        // Loop para o jogo acontecer
         for (i = 0; i < matPadrao.length; i++) {
             for (j = 0; j < matPadrao[0].length; j++) {
 
@@ -205,7 +194,11 @@ public class meuvetor {
                                 System.out.println(" ");
                             }
                         }
-                        // Conferindo se é identidade
+
+                        jogoEncerrado = checkDireitaEsquerda(mat);
+                        if (jogoEncerrado == false) {
+                            jogoEncerrado = checkEsquerdaDireita(mat);
+                        }
 
                     }
                 }
@@ -253,105 +246,4 @@ public class meuvetor {
         }
         return identidade;
     }
-}
-
-public class meuvetor {
-    public static void main(String[] args) {
-        boolean identidade = true;
-        int mat[][] = {
-                { 0, 0, 0, 0, 1 },
-                { 0, 0, 0, 1, 0 },
-                { 0, 0, 1, 0, 0 },
-                { 0, 1, 0, 0, 0 },
-                { 1, 0, 0, 0, 0 },
-        };
-        identidade = checkEsquerdaDireita(mat);
-        if (identidade == false) {
-            identidade = checkDireitaEsquerda(mat);
-        }
-
-        if (identidade == false) {
-            System.out.println("\n@@@@@@@ NÃO é identidade!");
-        } else {
-            System.out.println("\n@@@ É identidade!");
-        }
-
-        /*
-         * if (matPadrao[0][0] == 0 && matPadrao[0][1] == 0 && matPadrao[0][2] == 0) {
-         * jogoEncerrado = true;
-         * System.out.println("@@@@@@@@ Jogador 1 venceu! @@@@@@@@");
-         * }
-         * if (matPadrao[1][0] == 0 && matPadrao[1][1] == 0 && matPadrao[1][2] == 0) {
-         * jogoEncerrado = true;
-         * System.out.println("@@@@@@@@ Jogador 1 venceu! @@@@@@@@");
-         * }
-         * if (matPadrao[2][0] == 0 && matPadrao[2][1] == 0 && matPadrao[2][2] == 0) {
-         * jogoEncerrado = true;
-         * System.out.println("@@@@@@@@ Jogador 1 venceu! @@@@@@@@");
-         * }
-         * if (matPadrao[0][0] == 0 && matPadrao[1][0] == 0 && matPadrao[2][0] == 0) {
-         * jogoEncerrado = true;
-         * System.out.println("@@@@@@@@ Jogador 1 venceu! @@@@@@@@");
-         * }
-         * if (matPadrao[0][1] == 0 && matPadrao[1][1] == 0 && matPadrao[2][1] == 0) {
-         * jogoEncerrado = true;
-         * System.out.println("@@@@@@@@ Jogador 1 venceu! @@@@@@@@");
-         * }
-         * if (matPadrao[0][2] == 0 && matPadrao[1][2] == 0 && matPadrao[2][2] == 0) {
-         * jogoEncerrado = true;
-         * System.out.println("@@@@@@@@ Jogador 1 venceu! @@@@@@@@");
-         * }
-         * if (matPadrao[0][0] == 0 && matPadrao[1][1] == 0 && matPadrao[2][2] == 0) {
-         * jogoEncerrado = true;
-         * System.out.println("@@@@@@@@ Jogador 1 venceu! @@@@@@@@");
-         * }
-         * if (matPadrao[0][2] == 0 && matPadrao[1][1] == 0 && matPadrao[2][0] == 0) {
-         * jogoEncerrado = true;
-         * System.out.println("@@@@@@@@ Jogador 1 venceu! @@@@@@@@");
-         * }
-         * //////////
-         * if (matPadrao[0][0] == -1 && matPadrao[0][1] == -1 && matPadrao[0][2] == -1)
-         * {
-         * jogoEncerrado = true;
-         * System.out.println("@@@@@@@@ Jogador 2 venceu! @@@@@@@@");
-         * }
-         * if (matPadrao[1][0] == -1 && matPadrao[1][1] == -1 && matPadrao[1][2] == -1)
-         * {
-         * jogoEncerrado = true;
-         * System.out.println("@@@@@@@@ Jogador 2 venceu! @@@@@@@@");
-         * }
-         * if (matPadrao[2][0] == -1 && matPadrao[2][1] == -1 && matPadrao[2][2] == -1)
-         * {
-         * jogoEncerrado = true;
-         * System.out.println("@@@@@@@@ Jogador 2 venceu! @@@@@@@@");
-         * }
-         * if (matPadrao[0][0] == -1 && matPadrao[1][0] == -1 && matPadrao[2][0] == -1)
-         * {
-         * jogoEncerrado = true;
-         * System.out.println("@@@@@@@@ Jogador 2 venceu! @@@@@@@@");
-         * }
-         * if (matPadrao[0][1] == -1 && matPadrao[1][1] == -1 && matPadrao[2][1] == -1)
-         * {
-         * jogoEncerrado = true;
-         * System.out.println("@@@@@@@@ Jogador 2 venceu! @@@@@@@@");
-         * }
-         * if (matPadrao[0][2] == -1 && matPadrao[1][2] == -1 && matPadrao[2][2] == -1)
-         * {
-         * jogoEncerrado = true;
-         * System.out.println("@@@@@@@@ Jogador 2 venceu! @@@@@@@@");
-         * }
-         * if (matPadrao[0][0] == -1 && matPadrao[1][1] == -1 && matPadrao[2][2] == -1)
-         * {
-         * jogoEncerrado = true;
-         * System.out.println("@@@@@@@@ Jogador 2 venceu! @@@@@@@@");
-         * }
-         * if (matPadrao[0][2] == -1 && matPadrao[1][1] == -1 && matPadrao[2][0] == -1)
-         * {
-         * jogoEncerrado = true;
-         * System.out.println("@@@@@@@@ Jogador 2 venceu! @@@@@@@@");
-         * }
-         */
-
-    }
-
 }
