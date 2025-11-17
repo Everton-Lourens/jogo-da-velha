@@ -26,7 +26,6 @@ Desde já, agradeço.
 
 public class meuvetor {
     public static void main(String[] args) {
-        boolean identidade = true;
 
         int mat[][] = {
                 { 0, 0, 0, 0, 1 },
@@ -36,7 +35,9 @@ public class meuvetor {
                 { 1, 0, 0, 0, 0 },
         };
 
-        // Confere se é identidade pela diagonal da direita para a esquerda, de cima para baixo
+        public static boolean checkDireitaEsquerda(int mat[][]) {
+            boolean identidade = true;
+                    // Confere se é identidade pela diagonal da direita para a esquerda, de cima para baixo
         for (int i = 0; i < mat.length; i++) {
             for (int j = mat[0].length - 1; j >= 0; j--) {
 
@@ -50,6 +51,8 @@ public class meuvetor {
 
             }
         }
+        return identidade;
+    }
 
         // Confere se é identidade pela diagonal da esquerda para a direita, de cima para baixo
         for (int i = 0; i < mat.length; i++) {
