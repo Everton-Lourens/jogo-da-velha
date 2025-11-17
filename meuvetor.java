@@ -38,17 +38,14 @@ public class meuvetor {
 
         for (int i = 0; i < mat.length; i++) {
             for (int j = mat[0].length - 1; j >= 0; j--) {
-                // System.out.println(mat[i][j] + " - " + "posição [i: " + i + "][j: " + j +
-                // "]");
 
-                if ((mat[i][(mat[0].length - i) - 1] == 0)) {
+                if ((mat[i][(mat[0].length - i) - 1] != 1)) {
                     identidade = false;
-                    // break;
                 }
-
-                if ((i == j) && (mat[i][j] != 1)) {
-                    // identidade = false;
-                    // break;
+                
+                if (mat[i][j] != 0 && (mat[i][(mat[0].length - i) - 1] != 1)) {
+                    System.out.println(mat[i][j] + " - " + "posição [i: " + i + "][j: " + j + "]");
+                    identidade = false;
                 }
 
                 if ((i != j) && (mat[i][j] != 0)) {
