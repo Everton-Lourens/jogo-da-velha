@@ -26,7 +26,7 @@ Desde já, agradeço.
 
 public class meuvetor {
     public static void main(String[] args) {
-
+        boolean identidade = true;
         int mat[][] = {
                 { 0, 0, 0, 0, 1 },
                 { 0, 0, 0, 1, 0 },
@@ -34,39 +34,8 @@ public class meuvetor {
                 { 0, 1, 0, 0, 0 },
                 { 1, 0, 0, 0, 0 },
         };
-
-        public static boolean checkDireitaEsquerda(int mat[][]) {
-            boolean identidade = true;
-                    // Confere se é identidade pela diagonal da direita para a esquerda, de cima para baixo
-        for (int i = 0; i < mat.length; i++) {
-            for (int j = mat[0].length - 1; j >= 0; j--) {
-
-                if ((mat[i][(mat[0].length - i) - 1] != 1)) {
-                    identidade = false;
-                }
-
-                if ((mat[i][j] != 0) && (j != (mat[0].length - i) - 1)) {
-                    identidade = false;
-                }
-
-            }
-        }
-        return identidade;
-    }
-
-        // Confere se é identidade pela diagonal da esquerda para a direita, de cima para baixo
-        for (int i = 0; i < mat.length; i++) {
-            for (int j = 0; j < mat[0].length; j++) {
-
-                if ((i == j) && (mat[i][j] != 1)) {
-                    identidade = false;
-                }
-
-                if ((i != j) && (mat[i][j] != 0)) {
-                    identidade = false;
-                }
-            }
-        }
+        identidade = checkDireitaEsquerda(mat);
+        identidade = checkEsquerdaDireita(mat);
 
         if (identidade == false) {
             System.out.println("\n@@@@@@@ NÃO é identidade!");
@@ -151,4 +120,44 @@ public class meuvetor {
          */
 
     }
+
+    public static boolean checkEsquerdaDireita(int mat[][]) {
+        boolean identidade = true;
+        // Confere se é identidade pela diagonal da esquerda para a direita, de cima
+        // para baixo
+        for (int i = 0; i < mat.length; i++) {
+            for (int j = 0; j < mat[0].length; j++) {
+
+                if ((i == j) && (mat[i][j] != 1)) {
+                    identidade = false;
+                }
+
+                if ((i != j) && (mat[i][j] != 0)) {
+                    identidade = false;
+                }
+            }
+        }
+        return identidade;
+    }
+
+    public static boolean checkDireitaEsquerda(int mat[][]) {
+        boolean identidade = true;
+        // Confere se é identidade pela diagonal da direita para a esquerda, de cima
+        // para baixo
+        for (int i = 0; i < mat.length; i++) {
+            for (int j = mat[0].length - 1; j >= 0; j--) {
+
+                if ((mat[i][(mat[0].length - i) - 1] != 1)) {
+                    identidade = false;
+                }
+
+                if ((mat[i][j] != 0) && (j != (mat[0].length - i) - 1)) {
+                    identidade = false;
+                }
+
+            }
+        }
+        return identidade;
+    }
+
 }
