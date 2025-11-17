@@ -29,26 +29,30 @@ public class meuvetor {
         boolean identidade = true;
 
         int mat[][] = {
-                { 0, 0, 0, 0, 6 },
-                { 0, 0, 0, 5, 0 },
-                { 0, 0, 4, 0, 0 },
-                { 0, 3, 0, 0, 0 },
-                { 2, 0, 0, 0, 0 },
+                { 0, 0, 0, 0, 1 },
+                { 0, 0, 0, 1, 0 },
+                { 0, 0, 1, 0, 0 },
+                { 0, 1, 0, 0, 0 },
+                { 1, 0, 0, 0, 0 },
         };
 
         for (int i = 0; i < mat.length; i++) {
             for (int j = mat[0].length - 1; j >= 0; j--) {
-                System.out.println(mat[i][j] + " - " + "posição [i: " + i + "][j: " + j + "]");
+                // System.out.println(mat[i][j] + " - " + "posição [i: " + i + "][j: " + j +
+                // "]");
 
-                                System.out.println(mat[i][(mat[0].length - i) - 1]);
-
-                if ((i == j) && (mat[i][j] != 1)) {
+                if ((mat[i][(mat[0].length - i) - 1] == 0)) {
                     identidade = false;
                     // break;
                 }
 
+                if ((i == j) && (mat[i][j] != 1)) {
+                    // identidade = false;
+                    // break;
+                }
+
                 if ((i != j) && (mat[i][j] != 0)) {
-                    identidade = false;
+                    // identidade = false;
                     // break;
                 }
             }
@@ -58,12 +62,12 @@ public class meuvetor {
             for (int j = 0; j < mat[0].length; j++) {
 
                 if ((i == j) && (mat[i][j] != 1)) {
-                    identidade = false;
+                    // identidade = false;
                     break;
                 }
 
                 if ((i != j) && (mat[i][j] != 0)) {
-                    identidade = false;
+                    // identidade = false;
                     break;
                 }
             }
