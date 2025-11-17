@@ -39,6 +39,9 @@ public class meuvetor {
         for (int i = 0; i < mat.length; i++) {
             for (int j = mat[0].length - 1; j >= 0; j--) {
                 System.out.println(mat[i][j] + " - " + "posição [i: " + i + "][j: " + j + "]");
+
+                                System.out.println(mat[i][(mat[0].length - i) - 1]);
+
                 if ((i == j) && (mat[i][j] != 1)) {
                     identidade = false;
                     // break;
