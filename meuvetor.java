@@ -42,16 +42,11 @@ public class meuvetor {
                 if ((mat[i][(mat[0].length - i) - 1] != 1)) {
                     identidade = false;
                 }
-                
-                if (mat[i][j] != 0 && (mat[i][(mat[0].length - i) - 1] != 1)) {
-                    System.out.println(mat[i][j] + " - " + "posição [i: " + i + "][j: " + j + "]");
+
+                if ((mat[i][j] != 0) && (j != (mat[0].length - i) - 1)) {
                     identidade = false;
                 }
 
-                if ((i != j) && (mat[i][j] != 0)) {
-                    // identidade = false;
-                    // break;
-                }
             }
         }
 
