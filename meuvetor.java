@@ -57,10 +57,7 @@ public class meuvetor {
     public static void main(String[] args) {
         // Inicializando scanner
         Scanner sc = new Scanner(System.in);
-        System.out.println("======== Jogo da Velha ========");
-        System.out.println("........... REGRAS ...........");
-        System.out.println("- Cada jogador terá sua vez de jogar.");
-        System.out.println("========================");
+        System.out.println("\n======== Jogo da Velha ========");
 
         // Inicializando matriz padrão do jogo para o jogador escolher os números
         int matPadrao[][] = {
@@ -68,8 +65,6 @@ public class meuvetor {
                 { 4, 5, 6 },
                 { 7, 8, 9 },
         };
-        boolean identidade = checkVertEsquerDirei(matPadrao);
-        System.out.println("Identidade: " + identidade);
         int matJogadorUm[][] = {
                 { 0, 0, 0 },
                 { 0, 0, 0 },
@@ -164,12 +159,19 @@ public class meuvetor {
                             }
 
                             jogoEncerrado = checkDiagEsquerDirei(matJogadorUm);
+                            System.out.println("checkDiagEsquerDirei" + jogoEncerrado);
                             if (jogoEncerrado == false) {
                                 jogoEncerrado = checkDiagDireiEsquer(matJogadorUm);
+                                System.out.println("checkDiagDireiEsquer" + jogoEncerrado);
                             } else if (jogoEncerrado == false) {
                                 jogoEncerrado = checkHorizEsquerDirei(matJogadorUm);
+                                System.out.println("checkHorizEsquerDirei" + jogoEncerrado);
                             } else if (jogoEncerrado == false) {
                                 jogoEncerrado = checkVertEsquerDirei(matJogadorUm);
+                                System.out.println("checkVertEsquerDirei" + jogoEncerrado);
+                            }
+                            if (jogoEncerrado == true) {
+                                System.out.println("Jogador 1 (X) venceu!");
                             }
 
                             // Jogador 2 faz sua jogada
@@ -209,13 +211,16 @@ public class meuvetor {
                                 }
                                 System.out.println(" ");
                             }
-                            jogoEncerrado = checkDiagEsquerDirei(matJogadorUm);
+                            jogoEncerrado = checkDiagEsquerDirei(matJogadorDois);
                             if (jogoEncerrado == false) {
-                                jogoEncerrado = checkDiagDireiEsquer(matJogadorUm);
+                                jogoEncerrado = checkDiagDireiEsquer(matJogadorDois);
                             } else if (jogoEncerrado == false) {
-                                jogoEncerrado = checkHorizEsquerDirei(matJogadorUm);
+                                jogoEncerrado = checkHorizEsquerDirei(matJogadorDois);
                             } else if (jogoEncerrado == false) {
-                                jogoEncerrado = checkVertEsquerDirei(matJogadorUm);
+                                jogoEncerrado = checkVertEsquerDirei(matJogadorDois);
+                            }
+                            if (jogoEncerrado == true) {
+                                System.out.println("Jogador 2 (O) venceu!");
                             }
                         }
 
@@ -284,6 +289,15 @@ public class meuvetor {
                 }
             }
         }
+        System.out.println("TEEEEEEEEEEEEEESTE");
+        // Mostrando a matriz padrão para os jogadores escolherem os números
+        for (int x = 0; x < mat.length; x++) {
+            for (int y = 0; y < mat[0].length; y++) {
+                System.out.print(mat[x][y] + "  ");
+            }
+            System.out.println(" ");
+        } // Encerra a exibição
+        System.out.println("TEEEEEEEEEEEEEESTE");
         return count == mat[0].length;
     }
 
@@ -298,7 +312,6 @@ public class meuvetor {
                 count = 0;
             }
             for (int j = 0; j < mat[0].length; j++) {
-                System.out.println(mat[j][i] + " - " + i + " - " + j);
                 if (mat[j][i] == 1) {
                     count++;
                 } else {
