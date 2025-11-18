@@ -66,9 +66,9 @@ public class meuvetor {
         int matPadrao[][] = {
                 { 1, 2, 3 },
                 { 4, 5, 6 },
-                { 7, 8, 9 }
+                { 7, 8, 9 },
         };
-
+        checkHorizEsquerDirei(matPadrao);
         int matJogadorUm[][] = {
                 { 0, 0, 0 },
                 { 0, 0, 0 },
@@ -162,11 +162,11 @@ public class meuvetor {
                                 System.out.println(" ");
                             }
 
-                            jogoEncerrado = checkEsquerdaDireita(matJogadorUm);
-                                System.out.println("jogoEncerrado JOGADOR 1 - 1111111 ?");
+                            jogoEncerrado = checkDiagEsquerDirei(matJogadorUm);
+                            System.out.println("jogoEncerrado JOGADOR 1 - 1111111 ?");
                             System.out.println(jogoEncerrado);
                             if (jogoEncerrado == false) {
-                                jogoEncerrado = checkDireitaEsquerda(matJogadorUm);
+                                jogoEncerrado = checkDiagDireiEsquer(matJogadorUm);
                                 System.out.println("jogoEncerrado JOGADOR 1 - 2222222 ?");
                                 System.out.println(jogoEncerrado);
                             }
@@ -208,11 +208,11 @@ public class meuvetor {
                                 }
                                 System.out.println(" ");
                             }
-                            jogoEncerrado = checkEsquerdaDireita(matJogadorDois);
-                                System.out.println("jogoEncerrado JOGADOR 1 - 111111 ?");
+                            jogoEncerrado = checkDiagEsquerDirei(matJogadorDois);
+                            System.out.println("jogoEncerrado JOGADOR 1 - 111111 ?");
                             System.out.println(jogoEncerrado);
                             if (jogoEncerrado == false) {
-                                jogoEncerrado = checkDireitaEsquerda(matJogadorDois);
+                                jogoEncerrado = checkDiagDireiEsquer(matJogadorDois);
                                 System.out.println("jogoEncerrado JOGADOR 1 - 222222 ?");
                                 System.out.println(jogoEncerrado);
                             }
@@ -226,7 +226,7 @@ public class meuvetor {
         sc.close();
     }
 
-    public static boolean checkEsquerdaDireita(int mat[][]) {
+    public static boolean checkDiagEsquerDirei(int mat[][]) {
         boolean identidade = true;
         // Confere se é identidade pela diagonal da esquerda para a direita, de cima
         // para baixo
@@ -245,7 +245,7 @@ public class meuvetor {
         return identidade;
     }
 
-    public static boolean checkDireitaEsquerda(int mat[][]) {
+    public static boolean checkDiagDireiEsquer(int mat[][]) {
         boolean identidade = true;
         // Confere se é identidade pela diagonal da direita para a esquerda, de cima
         // para baixo
@@ -261,6 +261,42 @@ public class meuvetor {
                 }
 
             }
+        }
+        return identidade;
+    }
+
+    public static boolean checkHorizEsquerDirei(int mat[][]) {
+        int matPadrao[][] = {
+                { 1, 2, 3 },
+                { 4, 5, 6 },
+                { 7, 8, 9 }
+        };
+
+        boolean identidade = true;
+        int count = 0;
+        // Confere se é identidade pela diagonal da esquerda para a direita, de cima
+        // para baixo
+        for (int i = 0; i < mat.length; i++) {
+            count = 0;
+            for (int j = 0; j < mat[0].length; j++) {
+
+                if (mat[i][j] == 1) {
+                    count++;
+                } else {
+                    break;
+                }
+
+                if ((i == j) && (mat[i][j] != 1)) {
+                    identidade = false;
+                }
+
+                if ((i != j) && (mat[i][j] != 0)) {
+                    identidade = false;
+                }
+            }
+        }
+        if (count != matPadrao[0].length) {
+            identidade = false;
         }
         return identidade;
     }
