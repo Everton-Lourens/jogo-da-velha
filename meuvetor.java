@@ -292,20 +292,20 @@ public class meuvetor {
         // Confere se é identidade pela vertical da esquerda para a direita, de cima
         // para baixo
         for (int i = 0; i < mat.length; i++) {
-            if (count == mat[0].length) {
-                //break;
+            if (count == mat.length) {
+                break;
             } else {
-                //count = 0;
+                count = 0;
             }
             for (int j = 0; j < mat[0].length; j++) {
-            System.out.println(mat[j][i] + " - " + i + " - " + j);
-                if (mat[i][j] == 1) {
-                    //count++;
+                System.out.println(mat[j][i] + " - " + i + " - " + j);
+                if (mat[j][i] == 1) {
+                    count++;
                 } else {
-                    //break;
+                    break;
                 }
             }
         }
-        return count == mat[0].length;
+        return count == mat.length;
     }
 }
