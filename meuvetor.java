@@ -66,7 +66,7 @@ public class meuvetor {
         int matPadrao[][] = {
                 { 1, 2, 3 },
                 { 4, 5, 6 },
-                { 1, 1, 1 },
+                { 7, 8, 9 },
         };
         boolean identidade = checkHorizEsquerDirei(matPadrao);
         System.out.println("Identidade: " + identidade);
@@ -267,16 +267,15 @@ public class meuvetor {
     }
 
     public static boolean checkHorizEsquerDirei(int mat[][]) {
-        boolean identidade = true;
         int count = 0;
         // Confere se é identidade pela diagonal da esquerda para a direita, de cima
         // para baixo
         for (int i = 0; i < mat.length; i++) {
+            System.out.println(mat[0].length);
+            System.out.println(count);
             if (count == mat[0].length) {
-                identidade = true;
                 break;
             } else {
-                identidade = false;
                 count = 0;
             }
             for (int j = 0; j < mat[0].length; j++) {
@@ -287,6 +286,6 @@ public class meuvetor {
                 }
             }
         }
-        return identidade;
+        return count == mat[0].length;
     }
 }
