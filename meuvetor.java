@@ -137,8 +137,8 @@ public class meuvetor {
                                     // a posição escolhida
                                     if (inputJogadorUm == matPadrao[x][y]) {
                                         // A escolha do primeiro jogador é marcada com '0' na matriz
-                                        matPadrao[x][y] = -1;
-                                        matJogadorUm[x][y] = -1;
+                                        matPadrao[x][y] = 0;
+                                        matJogadorUm[x][y] = 1;
                                         // Passa a vez para o jogador 2 caso o jogador 1 escolha um número válido
                                         contarRodada = 2;
                                     } else {
@@ -147,10 +147,10 @@ public class meuvetor {
                                         i--;
                                         j--;
                                     }
-                                    if (matPadrao[x][y] == -1) {
+                                    if (matPadrao[x][y] == 0) {
                                         // Se a matriz tiver algum número '0', marca 'X' para indicar o jogador 1
                                         System.out.print("X" + "  ");
-                                    } else if (matPadrao[x][y] == -2) {
+                                    } else if (matPadrao[x][y] == -1) {
                                         // Se a matriz tiver algum número '-1', marca 'O' para indicar o jogador 2
                                         System.out.print("O" + "  ");
                                     } else {
@@ -163,11 +163,11 @@ public class meuvetor {
                             }
 
                             jogoEncerrado = checkEsquerdaDireita(matJogadorUm);
-                            System.out.println("jogoEncerrado 111 ?");
+                                System.out.println("jogoEncerrado JOGADOR 1 - 1111111 ?");
                             System.out.println(jogoEncerrado);
                             if (jogoEncerrado == false) {
                                 jogoEncerrado = checkDireitaEsquerda(matJogadorUm);
-                                System.out.println("jogoEncerrado 22222 ?");
+                                System.out.println("jogoEncerrado JOGADOR 1 - 2222222 ?");
                                 System.out.println(jogoEncerrado);
                             }
 
@@ -184,8 +184,8 @@ public class meuvetor {
                                     // marcar a posição escolhida
                                     if (inputJogadorDois == matPadrao[x][y]) {
                                         // A escolha do primeiro jogador é marcada com '-1' na matriz
-                                        matPadrao[x][y] = -2;
-                                        matJogadorDois[x][y] = -2;
+                                        matPadrao[x][y] = -1;
+                                        matJogadorDois[x][y] = 1;
                                         // Passa a vez para o jogador 1 caso o jogador 2 escolha um número válido
                                         contarRodada = 1;
                                     } else {
@@ -194,10 +194,10 @@ public class meuvetor {
                                         i--;
                                         j--;
                                     }
-                                    if (matPadrao[x][y] == -1) {
+                                    if (matPadrao[x][y] == 0) {
                                         // Se a matriz tiver algum número '0', marca 'X' para indicar o jogador 1
                                         System.out.print("X" + "  ");
-                                    } else if (matPadrao[x][y] == -2) {
+                                    } else if (matPadrao[x][y] == -1) {
                                         // Se a matriz tiver algum número '-1', marca 'O' para indicar o jogador 2
                                         System.out.print("O" + "  ");
                                     } else {
@@ -209,11 +209,11 @@ public class meuvetor {
                                 System.out.println(" ");
                             }
                             jogoEncerrado = checkEsquerdaDireita(matJogadorDois);
-                            System.out.println("jogoEncerrado 111 ?");
+                                System.out.println("jogoEncerrado JOGADOR 1 - 111111 ?");
                             System.out.println(jogoEncerrado);
                             if (jogoEncerrado == false) {
                                 jogoEncerrado = checkDireitaEsquerda(matJogadorDois);
-                                System.out.println("jogoEncerrado 22222 ?");
+                                System.out.println("jogoEncerrado JOGADOR 1 - 222222 ?");
                                 System.out.println(jogoEncerrado);
                             }
                         }
