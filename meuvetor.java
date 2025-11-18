@@ -164,12 +164,12 @@ public class meuvetor {
                             }
 
                             jogoEncerrado = checkDiagEsquerDirei(matJogadorUm);
-                            System.out.println("jogoEncerrado JOGADOR 1 - 1111111 ?");
-                            System.out.println(jogoEncerrado);
                             if (jogoEncerrado == false) {
                                 jogoEncerrado = checkDiagDireiEsquer(matJogadorUm);
-                                System.out.println("jogoEncerrado JOGADOR 1 - 2222222 ?");
-                                System.out.println(jogoEncerrado);
+                            } else if (jogoEncerrado == false) {
+                                jogoEncerrado = checkHorizEsquerDirei(matJogadorUm);
+                            } else if (jogoEncerrado == false) {
+                                jogoEncerrado = checkVertEsquerDirei(matJogadorUm);
                             }
 
                             // Jogador 2 faz sua jogada
@@ -209,13 +209,13 @@ public class meuvetor {
                                 }
                                 System.out.println(" ");
                             }
-                            jogoEncerrado = checkDiagEsquerDirei(matJogadorDois);
-                            System.out.println("jogoEncerrado JOGADOR 1 - 111111 ?");
-                            System.out.println(jogoEncerrado);
+                            jogoEncerrado = checkDiagEsquerDirei(matJogadorUm);
                             if (jogoEncerrado == false) {
-                                jogoEncerrado = checkDiagDireiEsquer(matJogadorDois);
-                                System.out.println("jogoEncerrado JOGADOR 1 - 222222 ?");
-                                System.out.println(jogoEncerrado);
+                                jogoEncerrado = checkDiagDireiEsquer(matJogadorUm);
+                            } else if (jogoEncerrado == false) {
+                                jogoEncerrado = checkHorizEsquerDirei(matJogadorUm);
+                            } else if (jogoEncerrado == false) {
+                                jogoEncerrado = checkVertEsquerDirei(matJogadorUm);
                             }
                         }
 
