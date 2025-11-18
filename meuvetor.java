@@ -57,8 +57,8 @@ public class meuvetor {
     public static void main(String[] args) {
         // Inicializando scanner
         Scanner sc = new Scanner(System.in);
-        System.out.println("\n======== Jogo da Velha ========");
-
+        System.out.println("\n===== Jogo da Velha =====");
+        System.out.println("========");
         // Inicializando matriz padrão do jogo para o jogador escolher os números
         int matPadrao[][] = {
                 { 1, 2, 3 },
@@ -107,26 +107,14 @@ public class meuvetor {
                             break;
                         }
 
-                        // Inicia a variável como verdadeira para conferir se há números restantes na
-                        // matriz
-                        jogoEncerrado = true;
-                        for (t = 0; t < matPadrao.length; t++) {
-                            for (k = 0; k < matPadrao[0].length; k++) {
-                                if (matPadrao[t][k] > 0) {
-                                    // Se houver algum número positivo, significa que ainda existe opções para jogar
-                                    // e o jogo não pode ser encerrado
-                                    jogoEncerrado = false;
-                                }
-                            }
-                        }
-
                         // Jogador 1 faz sua jogada
                         if (contarRodada == 1) {
+                            System.out.println("========");
                             System.out.println("========================");
                             System.out.println("É a vez do jogador 1! (X)");
                             System.out.println("Escolha um número!");
                             int inputJogadorUm = sc.nextInt();
-
+                            System.out.println("========");
                             for (x = 0; x < matPadrao.length; x++) {
                                 for (y = 0; y < matPadrao[0].length; y++) {
                                     // Se o input do jogador 1 for igual ao número da matriz, coloca '0' para marcar
@@ -157,18 +145,19 @@ public class meuvetor {
                                 }
                                 System.out.println(" ");
                             }
+                            System.out.println("========");
 
-                            jogoEncerrado = checkDiagEsquerDirei(matJogadorUm);
-                            System.out.println("checkDiagEsquerDirei" + jogoEncerrado);
+                            if (jogoEncerrado == false) {
+                                jogoEncerrado = checkDiagEsquerDirei(matJogadorUm);
+                            }
                             if (jogoEncerrado == false) {
                                 jogoEncerrado = checkDiagDireiEsquer(matJogadorUm);
-                                System.out.println("checkDiagDireiEsquer" + jogoEncerrado);
-                            } else if (jogoEncerrado == false) {
+                            }
+                            if (jogoEncerrado == false) {
                                 jogoEncerrado = checkHorizEsquerDirei(matJogadorUm);
-                                System.out.println("checkHorizEsquerDirei" + jogoEncerrado);
-                            } else if (jogoEncerrado == false) {
+                            }
+                            if (jogoEncerrado == false) {
                                 jogoEncerrado = checkVertEsquerDirei(matJogadorUm);
-                                System.out.println("checkVertEsquerDirei" + jogoEncerrado);
                             }
                             if (jogoEncerrado == true) {
                                 System.out.println("Jogador 1 (X) venceu!");
@@ -180,7 +169,7 @@ public class meuvetor {
                             System.out.println("É a vez do jogador 2! (O)");
                             System.out.println("Escolha um número!");
                             int inputJogadorDois = sc.nextInt();
-
+                            System.out.println("========");
                             for (x = 0; x < matPadrao.length; x++) {
                                 for (y = 0; y < matPadrao[0].length; y++) {
                                     // Se o input do jogador 2 for igual ao número da matriz, coloca '-1' para
@@ -211,16 +200,38 @@ public class meuvetor {
                                 }
                                 System.out.println(" ");
                             }
-                            jogoEncerrado = checkDiagEsquerDirei(matJogadorDois);
+                            System.out.println("========");
+                            if (jogoEncerrado == false) {
+                                jogoEncerrado = checkDiagEsquerDirei(matJogadorDois);
+                            }
                             if (jogoEncerrado == false) {
                                 jogoEncerrado = checkDiagDireiEsquer(matJogadorDois);
-                            } else if (jogoEncerrado == false) {
+                            }
+                            if (jogoEncerrado == false) {
                                 jogoEncerrado = checkHorizEsquerDirei(matJogadorDois);
-                            } else if (jogoEncerrado == false) {
+                            }
+                            if (jogoEncerrado == false) {
                                 jogoEncerrado = checkVertEsquerDirei(matJogadorDois);
                             }
                             if (jogoEncerrado == true) {
                                 System.out.println("Jogador 2 (O) venceu!");
+                            }
+                        }
+
+                        if (jogoEncerrado == false) {
+                            // Inicia a variável como verdadeira para conferir se há números restantes na
+                            // matriz
+                            jogoEncerrado = true;
+                            for (t = 0; t < matPadrao.length; t++) {
+                                for (k = 0; k < matPadrao[0].length; k++) {
+                                    if (matPadrao[t][k] > 0) {
+                                        // Se houver algum número positivo, significa que ainda existe opções para jogar
+                                        // e o jogo não pode ser encerrado
+                                        jogoEncerrado = false;
+                                    } else {
+                                        System.out.println("Deu velha! Ninguém venceu.");
+                                    }
+                                }
                             }
                         }
 
@@ -289,15 +300,6 @@ public class meuvetor {
                 }
             }
         }
-        System.out.println("TEEEEEEEEEEEEEESTE");
-        // Mostrando a matriz padrão para os jogadores escolherem os números
-        for (int x = 0; x < mat.length; x++) {
-            for (int y = 0; y < mat[0].length; y++) {
-                System.out.print(mat[x][y] + "  ");
-            }
-            System.out.println(" ");
-        } // Encerra a exibição
-        System.out.println("TEEEEEEEEEEEEEESTE");
         return count == mat[0].length;
     }
 
