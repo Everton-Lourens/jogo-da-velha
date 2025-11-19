@@ -24,32 +24,6 @@ Desde já, agradeço.
 
 //package vetores;
 
-// Aluno: Everton Lourenço da Silva (Apenas eu)
-// Matrícula: 200040212
-//////////////////
-// https://github.com/Everton-Lourens/jogo-da-velha
-// OBS::: NÃO FOI utilizado IA em hipótese alguma, pode olhar os "commits" enviados ao github.
-//////////////////
-/*
-Olá, professor!
-Fiz todo o código sem auxílio de IA, pode olhar os commits no meu GitHub:
-https://github.com/Everton-Lourens/jogo-da-velha
-
-Obs:: Na reunião com Osvaldo, ele falou para que eu mostrasse ao senhor que já sei programar, afinal eu já
-dei essa aula antes, porém não foi possível dispensar sua aula esse semestre pelo fato de ter apenas
-80 horas no curso anterior e sua aula ter 90 horas.
-Deixei de ir pra sua aula achando que já poderia dispensar ela, mas me dei
-mal...
-Se o senhor quiser considerar o fato que sei programar para não me reprovar
-por falta, vou ficar feliz, caso contrário, eu entendo não ser possível.
-
-Obs2:: Eu trabalho como motoboy e pago minha própria faculdade, jamais iria
-reprovar propositalmente e jogar dinheiro fora.
-Desde já, agradeço.
- */
-
-//package vetores;
-
 import java.util.Scanner;
 
 public class meuvetor {
@@ -228,8 +202,7 @@ public class meuvetor {
                                         // Se houver algum número positivo, significa que ainda existe opções para jogar
                                         // e o jogo não pode ser encerrado
                                         jogoEncerrado = false;
-                                    } else {
-                                        System.out.println("Deu velha! Ninguém venceu.");
+                                        break;
                                     }
                                 }
                             }
@@ -254,9 +227,13 @@ public class meuvetor {
                     identidade = false;
                 }
 
-                if ((i != j) && (mat[i][j] != 0)) {
-                    identidade = false;
-                }
+                /*
+                 * Independente se for identidade ou não, se tiver 1's da diagonal, deve
+                 * retornar true para mostrar que venceu o jogo
+                 * if ((i != j) && (mat[i][j] != 0)) {
+                 * identidade = false;
+                 * }
+                 */
             }
         }
         return identidade;
@@ -273,9 +250,13 @@ public class meuvetor {
                     identidade = false;
                 }
 
-                if ((mat[i][j] != 0) && (j != (mat[0].length - i) - 1)) {
-                    identidade = false;
-                }
+                /*
+                 * Independente se for identidade ou não, se tiver 1's da diagonal, deve
+                 * retornar true para mostrar que venceu o jogo
+                 * if ((mat[i][j] != 0) && (j != (mat[0].length - i) - 1)) {
+                 * identidade = false;
+                 * }
+                 */
 
             }
         }
