@@ -33,7 +33,7 @@ public class meuvetor {
         Scanner sc = new Scanner(System.in);
         System.out.println("\n===== Jogo da Velha =====");
         // Inicializando matriz padrão do jogo para o jogador escolher os números
-        int matPadrao[][] = {
+        int matJogador[][] = {
                 { 1, 2, 3 },
                 { 4, 5, 6 },
                 { 7, 8, 9 },
@@ -45,14 +45,14 @@ public class meuvetor {
         boolean jogoEncerrado = false;
         boolean deuVelha = false;
 
-        mostrarJogo(matPadrao);
+        mostrarJogo(matJogador);
 
         // Loop para o jogo acontecer
-        for (i = 0; i < matPadrao.length; i++) {
-            for (j = 0; j < matPadrao[0].length; j++) {
+        for (i = 0; i < matJogador.length; i++) {
+            for (j = 0; j < matJogador[0].length; j++) {
 
-                for (i = 0; i < matPadrao.length; i++) {
-                    for (j = 0; j < matPadrao[0].length; j++) {
+                for (i = 0; i < matJogador.length; i++) {
+                    for (j = 0; j < matJogador[0].length; j++) {
 
                         // Conferindo se o jogo já foi encerrado (deu velha ou não resta opções para
                         // jogar)
@@ -63,8 +63,8 @@ public class meuvetor {
                             } else {
                                 System.out.println("===>>> JOGADOR " + (numJogador * -1) + " VENCEU! <<<===");
                             }
-                            i = matPadrao.length;
-                            j = matPadrao.length;
+                            i = matJogador.length;
+                            j = matJogador.length;
                             sc.close();
                             break;
                         }
@@ -75,20 +75,20 @@ public class meuvetor {
 
                         int inputJogador = sc.nextInt();
 
-                        for (int x = 0; x < matPadrao.length; x++) {
-                            for (int y = 0; y < matPadrao[0].length; y++) {
+                        for (int x = 0; x < matJogador.length; x++) {
+                            for (int y = 0; y < matJogador[0].length; y++) {
                                 // Se o input do jogador for igual ao número da matriz, coloca -1 para o jogador
                                 // 1 ou -2 para marcar
                                 // a posição escolhida
-                                if (inputJogador == matPadrao[x][y]) {
+                                if (inputJogador == matJogador[x][y]) {
                                     // Jogador 1 faz sua jogada:
                                     if (numJogador == -1) {
                                         // A escolha do primeiro jogador é marcada com '-1' na matriz
-                                        matPadrao[x][y] = -1;
+                                        matJogador[x][y] = -1;
                                         // Jogador 2 faz sua jogada:
                                     } else if (numJogador == -2) {
                                         // A escolha do primeiro jogador é marcada com '-2' na matriz
-                                        matPadrao[x][y] = -2;
+                                        matJogador[x][y] = -2;
                                     }
                                 } else {
                                     // Não permite o jogo encerrar caso o jogador escolha um número inválido ou uma
@@ -101,13 +101,13 @@ public class meuvetor {
 
                         }
                         // Mostrando a matriz com a escolha do último jogador
-                        mostrarJogo(matPadrao);
+                        mostrarJogo(matJogador);
 
                         // Confere se o jogo foi vencido pelo jogador atual
-                        jogoEncerrado = conferirJogo(matPadrao, numJogador);
+                        jogoEncerrado = conferirJogo(matJogador, numJogador);
                         if (jogoEncerrado == false) {
                             // Confere se ainda há opções para jogar ou se deu velha
-                            jogoEncerrado = checkOpcoes(matPadrao);
+                            jogoEncerrado = checkOpcoes(matJogador);
                             deuVelha = jogoEncerrado;
                         }
                         // Passa a vez para o outro jogador se o jogo não foi encerrado
