@@ -116,55 +116,15 @@ public class meuvetor {
 
                         // Confere se o jogo foi vencido pelo jogador atual
                         jogoEncerrado = conferirJogo(matPadrao, numJogador);
-
+                        // Passa a vez para o outro jogador se o jogo não foi encerrado
                         if (jogoEncerrado == false) {
-                            // Passa a vez para o outro jogador
-                            if (numJogador == 1) {
-                                numJogador = 2;
+                            if (numJogador == -1) {
+                                numJogador = -2;
                             } else {
-                                numJogador = 1;
+                                numJogador = -1;
                             }
                         } else {
-                            System.out.println("Jogo encerrado! Jogador " + numJogador + " venceu!");
-                        }
-
-                        // Jogador 2 faz sua jogada
-                        if (numJogador == 2) {
-                            System.out.println("========================");
-                            System.out.println("É a vez do jogador 2! (O)");
-                            System.out.println("Escolha um número:");
-                            int inputJogadorDois = sc.nextInt();
-                            System.out.println("========");
-                            for (x = 0; x < matPadrao.length; x++) {
-                                for (y = 0; y < matPadrao[0].length; y++) {
-                                    // Se o input do jogador 2 for igual ao número da matriz, coloca '-1' para
-                                    // marcar a posição escolhida
-                                    if (inputJogadorDois == matPadrao[x][y]) {
-                                        // A escolha do primeiro jogador é marcada com '-1' na matriz
-                                        matPadrao[x][y] = -2;
-                                        // Passa a vez para o jogador 1 caso o jogador 2 escolha um número válido
-                                        numJogador = 1;
-                                    } else {
-                                        // Não permite o jogo encerrar caso o jogador escolha um número inválido
-                                        i--;
-                                        j--;
-                                    }
-
-                                }
-
-                            }
-                            // Mostrando a matriz com a escolha do jogador 2
-                            mostrarJogo(matPadrao);
-
-                            if (jogoEncerrado == false) {
-                                jogoEncerrado = conferirJogo(matJogadorDois, numJogador);
-                            } else {
-                                System.out.println("Jogador 2 (O) venceu!");
-                            }
-                        }
-
-                        if (jogoEncerrado == false) {
-                            jogoEncerrado = checkOpcoes(matPadrao);
+                            System.out.println("Jogo encerrado!");
                         }
 
                     }
@@ -240,7 +200,7 @@ public class meuvetor {
         for (int i = 0; i < mat.length; i++) {
             for (int j = 0; j < mat[0].length; j++) {
 
-                if ((i == j) && (mat[i][j] != 1)) {
+                if ((i == j) && (mat[i][j] != num)) {
                     identidade = false;
                 }
 
@@ -263,7 +223,7 @@ public class meuvetor {
         for (int i = 0; i < mat.length; i++) {
             for (int j = mat[0].length - 1; j >= 0; j--) {
 
-                if ((mat[i][(mat[0].length - i) - 1] != 1)) {
+                if ((mat[i][(mat[0].length - i) - 1] != num)) {
                     identidade = false;
                 }
 
@@ -291,7 +251,7 @@ public class meuvetor {
                 count = 0;
             }
             for (int j = 0; j < mat[0].length; j++) {
-                if (mat[i][j] == 1) {
+                if (mat[i][j] == num) {
                     count++;
                 } else {
                     break;
@@ -312,7 +272,7 @@ public class meuvetor {
                 count = 0;
             }
             for (int j = 0; j < mat[0].length; j++) {
-                if (mat[j][i] == 1) {
+                if (mat[j][i] == num) {
                     count++;
                 } else {
                     break;
