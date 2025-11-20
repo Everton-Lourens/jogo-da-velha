@@ -93,8 +93,6 @@ public class meuvetor {
                                     if (numJogador == 1) {
                                         // A escolha do primeiro jogador é marcada com '-1' na matriz
                                         matPadrao[x][y] = -1;
-                                        // Passa a vez para o jogador 2 caso o jogador 1 escolha um número válido
-                                        numJogador = 2;
                                         // Jogador 2 faz sua jogada:
                                     } else if (numJogador == 2) {
                                         // A escolha do primeiro jogador é marcada com '-2' na matriz
@@ -112,14 +110,24 @@ public class meuvetor {
                             }
 
                         }
-                        // Mostrando a matriz com a escolha do jogador 1
+                        // Mostrando a matriz com a escolha do último jogador
                         mostrarJogo(matPadrao);
                         System.out.println("========");
 
+                        // Confere se o jogo foi vencido pelo jogador atual
+                        jogoEncerrado = conferirJogo(matPadrao, numJogador);
+                        // Confere se ainda há opções para jogar
+                        jogoEncerrado = checkOpcoes(matPadrao);
+
                         if (jogoEncerrado == false) {
-                            jogoEncerrado = conferirJogo(matJogadorUm, numJogador);
+                            // Passa a vez para o outro jogador
+                            if (numJogador == 1) {
+                                numJogador = 2;
+                            } else {
+                                numJogador = 1;
+                            }
                         } else {
-                            System.out.println("Jogador 1 (X) venceu!");
+                            System.out.println("Jogo encerrado! Jogador " + numJogador + " venceu!");
                         }
 
                         // Jogador 2 faz sua jogada
@@ -158,19 +166,7 @@ public class meuvetor {
                         }
 
                         if (jogoEncerrado == false) {
-                            // Inicia a variável como verdadeira para conferir se há números restantes na
-                            // matriz
-                            jogoEncerrado = true;
-                            for (t = 0; t < matPadrao.length; t++) {
-                                for (k = 0; k < matPadrao[0].length; k++) {
-                                    if (matPadrao[t][k] > 0) {
-                                        // Se houver algum número positivo, significa que ainda existe opções para jogar
-                                        // e o jogo não pode ser encerrado
-                                        jogoEncerrado = false;
-                                        break;
-                                    }
-                                }
-                            }
+                            jogoEncerrado = checkOpcoes(matPadrao);
                         }
 
                     }
@@ -179,6 +175,23 @@ public class meuvetor {
             }
         }
         sc.close();
+    }
+
+    public static boolean checkOpcoes(int mat[][]) {
+        // Inicia a variável como verdadeira para conferir se há números restantes na
+        // matriz
+        boolean jogoEncerrado = true;
+        for (int i = 0; i < mat.length; i++) {
+            for (int j = 0; j < mat[0].length; j++) {
+                if (mat[i][j] > 0) {
+                    // Se houver algum número positivo, significa que ainda existe opções para jogar
+                    // e o jogo não pode ser encerrado
+                    jogoEncerrado = false;
+                    break;
+                }
+            }
+        }
+        return jogoEncerrado;
     }
 
     public static boolean conferirJogo(int matJogador[][], int numJogador) {
