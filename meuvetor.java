@@ -85,23 +85,30 @@ public class meuvetor {
 
                         for (x = 0; x < matPadrao.length; x++) {
                             for (y = 0; y < matPadrao[0].length; y++) {
-                                // Jogador 1 faz sua jogada
-                                if (numJogador == 1) {
-                                    // Se o input do jogador 1 for igual ao número da matriz, coloca '0' para marcar
-                                    // a posição escolhida
-                                    if (inputJogador == matPadrao[x][y]) {
+                                // Se o input do jogador for igual ao número da matriz, coloca -1 para o jogador
+                                // 1 ou -2 para marcar
+                                // a posição escolhida
+                                if (inputJogador == matPadrao[x][y]) {
+                                    // Jogador 1 faz sua jogada:
+                                    if (numJogador == 1) {
                                         // A escolha do primeiro jogador é marcada com '-1' na matriz
                                         matPadrao[x][y] = -1;
                                         // Passa a vez para o jogador 2 caso o jogador 1 escolha um número válido
                                         numJogador = 2;
-                                    } else {
-                                        // Não permite o jogo encerrar caso o jogador escolha um número inválido ou uma
-                                        // letra
-                                        i--;
-                                        j--;
+                                        // Jogador 2 faz sua jogada:
+                                    } else if (numJogador == 2) {
+                                        // A escolha do primeiro jogador é marcada com '-2' na matriz
+                                        matPadrao[x][y] = -2;
+                                        // Passa a vez para o jogador 1 caso o jogador 2 escolha um número válido
+                                        numJogador = 1;
                                     }
-
+                                } else {
+                                    // Não permite o jogo encerrar caso o jogador escolha um número inválido ou uma
+                                    // letra
+                                    i--;
+                                    j--;
                                 }
+
                             }
 
                         }
