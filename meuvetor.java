@@ -160,17 +160,26 @@ public class meuvetor {
             for (int j = 0; j < mat[0].length; j++) {
                 if (mat[i][j] == -1) {
                     // Se a matriz tiver algum número '0', marca 'X' para indicar o jogador 1
-                    System.out.print("X" + "  ");
+                    if (mat[0].length == j + 1) {
+                        System.out.print("X" + "|");
+                    } else {
+                        System.out.print("X" + "  ");
+                    }
                 } else if (mat[i][j] == -2) {
                     // Se a matriz tiver algum número '-1', marca 'O' para indicar o jogador 2
-                    System.out.print("O" + "  ");
+                    
+                    if (mat[0].length == j + 1) {
+                        System.out.print("O" + "|");
+                    } else {
+                        System.out.print("O" + "  ");
+                    }
                 } else {
                     // Senão, mostra apenas os números restantes na matriz para os jogadores
                     // escolherem
                     if (mat[0].length == j + 1) {
-                                            System.out.print(mat[i][j] + "|");
+                        System.out.print(mat[i][j] + "|");
                     } else {
-                    System.out.print(mat[i][j] + "  ");
+                        System.out.print(mat[i][j] + "  ");
                     }
                 }
 
