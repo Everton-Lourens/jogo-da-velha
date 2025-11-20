@@ -43,6 +43,7 @@ public class meuvetor {
         // Controle de rodada
         int numJogador = -1;
         boolean jogoEncerrado = false;
+        boolean deuVelha = false;
 
         mostrarJogo(matPadrao);
 
@@ -57,6 +58,11 @@ public class meuvetor {
                         // jogar)
                         if (jogoEncerrado == true) {
                             System.out.println("Jogo encerrado! Não há mais jogadas possíveis.");
+                            if (deuVelha == true) {
+                                System.out.println("===>>> DEU VELHA! <<<===");
+                            } else {
+                                System.out.println("===>>> JOGADOR " + (numJogador * -1) + " VENCEU! <<<===");
+                            }
                             i = matPadrao.length;
                             j = matPadrao.length;
                             sc.close();
@@ -99,6 +105,11 @@ public class meuvetor {
 
                         // Confere se o jogo foi vencido pelo jogador atual
                         jogoEncerrado = conferirJogo(matPadrao, numJogador);
+                        if (jogoEncerrado == false) {
+                            // Confere se ainda há opções para jogar ou se deu velha
+                            jogoEncerrado = checkOpcoes(matPadrao);
+                            deuVelha = jogoEncerrado;
+                        }
                         // Passa a vez para o outro jogador se o jogo não foi encerrado
                         if (jogoEncerrado == false) {
                             if (numJogador == -1) {
@@ -127,10 +138,6 @@ public class meuvetor {
         }
         if (jogoEncerrado == false) {
             jogoEncerrado = checkVertEsquerDirei(matJogador, numJogador);
-        }
-        if (jogoEncerrado == false) {
-            // Confere se ainda há opções para jogar
-            jogoEncerrado = checkOpcoes(matJogador);
         }
         return jogoEncerrado;
     }
@@ -167,7 +174,7 @@ public class meuvetor {
                     }
                 } else if (mat[i][j] == -2) {
                     // Se a matriz tiver algum número '-1', marca 'O' para indicar o jogador 2
-                    
+
                     if (mat[0].length == j + 1) {
                         System.out.print("O" + "|");
                     } else {
