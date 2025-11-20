@@ -116,8 +116,6 @@ public class meuvetor {
 
                         // Confere se o jogo foi vencido pelo jogador atual
                         jogoEncerrado = conferirJogo(matPadrao, numJogador);
-                        // Confere se ainda há opções para jogar
-                        jogoEncerrado = checkOpcoes(matPadrao);
 
                         if (jogoEncerrado == false) {
                             // Passa a vez para o outro jogador
@@ -177,23 +175,6 @@ public class meuvetor {
         sc.close();
     }
 
-    public static boolean checkOpcoes(int mat[][]) {
-        // Inicia a variável como verdadeira para conferir se há números restantes na
-        // matriz
-        boolean jogoEncerrado = true;
-        for (int i = 0; i < mat.length; i++) {
-            for (int j = 0; j < mat[0].length; j++) {
-                if (mat[i][j] > 0) {
-                    // Se houver algum número positivo, significa que ainda existe opções para jogar
-                    // e o jogo não pode ser encerrado
-                    jogoEncerrado = false;
-                    break;
-                }
-            }
-        }
-        return jogoEncerrado;
-    }
-
     public static boolean conferirJogo(int matJogador[][], int numJogador) {
         boolean jogoEncerrado = false;
         if (jogoEncerrado == false) {
@@ -207,6 +188,27 @@ public class meuvetor {
         }
         if (jogoEncerrado == false) {
             jogoEncerrado = checkVertEsquerDirei(matJogador, numJogador);
+        }
+        if (jogoEncerrado == false) {
+            // Confere se ainda há opções para jogar
+            jogoEncerrado = checkOpcoes(matJogador);
+        }
+        return jogoEncerrado;
+    }
+
+    public static boolean checkOpcoes(int mat[][]) {
+        // Inicia a variável como verdadeira para conferir se há números restantes na
+        // matriz
+        boolean jogoEncerrado = true;
+        for (int i = 0; i < mat.length; i++) {
+            for (int j = 0; j < mat[0].length; j++) {
+                if (mat[i][j] > 0) {
+                    // Se houver algum número positivo, significa que ainda existe opções para jogar
+                    // e o jogo não pode ser encerrado
+                    jogoEncerrado = false;
+                    break;
+                }
+            }
         }
         return jogoEncerrado;
     }
