@@ -53,7 +53,7 @@ public class meuvetor {
 
         int i, j, x, y, t, k;
         // Controle de rodada
-        int contarRodada = 1;
+        int numJogador = 1;
         boolean jogoEncerrado = false;
 
         mostrarJogo(matPadrao);
@@ -75,24 +75,25 @@ public class meuvetor {
                             break;
                         }
 
-                        // Jogador 1 faz sua jogada
-                        if (contarRodada == 1) {
-                            System.out.println("========");
-                            System.out.println("========================");
-                            System.out.println("É a vez do jogador 1! (X)");
-                            System.out.println("Escolha um número:");
-                            int inputJogadorUm = sc.nextInt();
-                            System.out.println("========");
-                            for (x = 0; x < matPadrao.length; x++) {
-                                for (y = 0; y < matPadrao[0].length; y++) {
+                        System.out.println("========");
+                        System.out.println("========================");
+                        System.out.println("É a vez do jogador " + numJogador);
+                        System.out.println("Escolha um número:");
+
+                        int inputJogador = sc.nextInt();
+                        System.out.println("========");
+
+                        for (x = 0; x < matPadrao.length; x++) {
+                            for (y = 0; y < matPadrao[0].length; y++) {
+                                // Jogador 1 faz sua jogada
+                                if (numJogador == 1) {
                                     // Se o input do jogador 1 for igual ao número da matriz, coloca '0' para marcar
                                     // a posição escolhida
-                                    if (inputJogadorUm == matPadrao[x][y]) {
-                                        // A escolha do primeiro jogador é marcada com '0' na matriz
-                                        matPadrao[x][y] = 0;
-                                        matJogadorUm[x][y] = 1;
+                                    if (inputJogador == matPadrao[x][y]) {
+                                        // A escolha do primeiro jogador é marcada com '-1' na matriz
+                                        matPadrao[x][y] = -1;
                                         // Passa a vez para o jogador 2 caso o jogador 1 escolha um número válido
-                                        contarRodada = 2;
+                                        numJogador = 2;
                                     } else {
                                         // Não permite o jogo encerrar caso o jogador escolha um número inválido ou uma
                                         // letra
@@ -101,20 +102,21 @@ public class meuvetor {
                                     }
 
                                 }
-
-                            }
-                            // Mostrando a matriz com a escolha do jogador 1
-                            mostrarJogo(matPadrao);
-                            System.out.println("========");
-
-                            if (jogoEncerrado == false) {
-                                jogoEncerrado = conferirJogo(matJogadorUm);
-                            } else {
-                                System.out.println("Jogador 1 (X) venceu!");
                             }
 
-                            // Jogador 2 faz sua jogada
-                        } else if (contarRodada == 2) {
+                        }
+                        // Mostrando a matriz com a escolha do jogador 1
+                        mostrarJogo(matPadrao);
+                        System.out.println("========");
+
+                        if (jogoEncerrado == false) {
+                            jogoEncerrado = conferirJogo(matJogadorUm, numJogador);
+                        } else {
+                            System.out.println("Jogador 1 (X) venceu!");
+                        }
+
+                        // Jogador 2 faz sua jogada
+                        if (numJogador == 2) {
                             System.out.println("========================");
                             System.out.println("É a vez do jogador 2! (O)");
                             System.out.println("Escolha um número:");
@@ -126,10 +128,9 @@ public class meuvetor {
                                     // marcar a posição escolhida
                                     if (inputJogadorDois == matPadrao[x][y]) {
                                         // A escolha do primeiro jogador é marcada com '-1' na matriz
-                                        matPadrao[x][y] = -1;
-                                        matJogadorDois[x][y] = 1;
+                                        matPadrao[x][y] = -2;
                                         // Passa a vez para o jogador 1 caso o jogador 2 escolha um número válido
-                                        contarRodada = 1;
+                                        numJogador = 1;
                                     } else {
                                         // Não permite o jogo encerrar caso o jogador escolha um número inválido
                                         i--;
@@ -143,7 +144,7 @@ public class meuvetor {
                             mostrarJogo(matPadrao);
 
                             if (jogoEncerrado == false) {
-                                jogoEncerrado = conferirJogo(matJogadorDois);
+                                jogoEncerrado = conferirJogo(matJogadorDois, numJogador);
                             } else {
                                 System.out.println("Jogador 2 (O) venceu!");
                             }
@@ -173,19 +174,19 @@ public class meuvetor {
         sc.close();
     }
 
-    public static boolean conferirJogo(int matJogador[][]) {
+    public static boolean conferirJogo(int matJogador[][], int numJogador) {
         boolean jogoEncerrado = false;
         if (jogoEncerrado == false) {
-            jogoEncerrado = checkDiagEsquerDirei(matJogador);
+            jogoEncerrado = checkDiagEsquerDirei(matJogador, numJogador);
         }
         if (jogoEncerrado == false) {
-            jogoEncerrado = checkDiagDireiEsquer(matJogador);
+            jogoEncerrado = checkDiagDireiEsquer(matJogador, numJogador);
         }
         if (jogoEncerrado == false) {
-            jogoEncerrado = checkHorizEsquerDirei(matJogador);
+            jogoEncerrado = checkHorizEsquerDirei(matJogador, numJogador);
         }
         if (jogoEncerrado == false) {
-            jogoEncerrado = checkVertEsquerDirei(matJogador);
+            jogoEncerrado = checkVertEsquerDirei(matJogador, numJogador);
         }
         return jogoEncerrado;
     }
@@ -194,10 +195,10 @@ public class meuvetor {
         // Mostrando a matriz padrão para os jogadores escolherem os números
         for (int x = 0; x < mat.length; x++) {
             for (int y = 0; y < mat[0].length; y++) {
-                if (mat[x][y] == 0) {
+                if (mat[x][y] == -1) {
                     // Se a matriz tiver algum número '0', marca 'X' para indicar o jogador 1
                     System.out.print("X" + "  ");
-                } else if (mat[x][y] == -1) {
+                } else if (mat[x][y] == -2) {
                     // Se a matriz tiver algum número '-1', marca 'O' para indicar o jogador 2
                     System.out.print("O" + "  ");
                 } else {
@@ -210,7 +211,7 @@ public class meuvetor {
         } // Encerra a exibição
     }
 
-    public static boolean checkDiagEsquerDirei(int mat[][]) {
+    public static boolean checkDiagEsquerDirei(int mat[][], int num) {
         boolean identidade = true;
         // Confere se é identidade pela diagonal da esquerda para a direita, de cima
         // para baixo
@@ -233,7 +234,7 @@ public class meuvetor {
         return identidade;
     }
 
-    public static boolean checkDiagDireiEsquer(int mat[][]) {
+    public static boolean checkDiagDireiEsquer(int mat[][], int num) {
         boolean identidade = true;
         // Confere se é identidade pela diagonal da direita para a esquerda, de cima
         // para baixo
@@ -257,7 +258,7 @@ public class meuvetor {
         return identidade;
     }
 
-    public static boolean checkHorizEsquerDirei(int mat[][]) {
+    public static boolean checkHorizEsquerDirei(int mat[][], int num) {
         int count = 0;
         // Confere se é identidade pela horizontal da esquerda para a direita, de cima
         // para baixo
@@ -278,7 +279,7 @@ public class meuvetor {
         return count == mat[0].length;
     }
 
-    public static boolean checkVertEsquerDirei(int mat[][]) {
+    public static boolean checkVertEsquerDirei(int mat[][], int num) {
         int count = 0;
         // Confere se é identidade pela vertical da esquerda para a direita, de cima
         // para baixo
