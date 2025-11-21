@@ -80,15 +80,25 @@ public class meuvetor {
                                 // Se o input do jogador for igual ao número da matriz, coloca -1 para o jogador
                                 // 1 ou -2 para marcar
                                 // a posição escolhida
-                                if (inputJogador == matJogador[x][y]) {
-                                    // Jogador 1 faz sua jogada:
+                                if (inputJogador == matJogador[x][y]) { // Jogador 1 faz sua jogada:
                                     if (numJogador == -1) {
                                         // A escolha do primeiro jogador é marcada com '-1' na matriz
                                         matJogador[x][y] = -1;
-                                        // Jogador 2 faz sua jogada:
-                                    } else if (numJogador == -2) {
+                                        // Confere se o jogo foi vencido pelo jogador atual
+                                        jogoEncerrado = conferirJogo(matJogador, numJogador);
+                                        if (jogoEncerrado == false) {
+                                            // passa a vez para o próximo jogador se o jogo não foi encerrado
+                                            numJogador = -2;
+                                        }
+                                    } else if (numJogador == -2) { // Jogador 2 faz sua jogada:
                                         // A escolha do primeiro jogador é marcada com '-2' na matriz
                                         matJogador[x][y] = -2;
+                                        // Confere se o jogo foi vencido pelo jogador atual
+                                        jogoEncerrado = conferirJogo(matJogador, numJogador);
+                                        if (jogoEncerrado == false) {
+                                            // passa a vez para o próximo jogador se o jogo não foi encerrado
+                                            numJogador = -1;
+                                        }
                                     }
                                 } else {
                                     // Não permite o jogo encerrar caso o jogador escolha um número inválido ou uma
@@ -102,21 +112,10 @@ public class meuvetor {
                         }
                         // Mostrando a matriz com a escolha do último jogador
                         mostrarJogo(matJogador);
-
-                        // Confere se o jogo foi vencido pelo jogador atual
-                        jogoEncerrado = conferirJogo(matJogador, numJogador);
                         if (jogoEncerrado == false) {
                             // Confere se ainda há opções para jogar ou se deu velha
-                            jogoEncerrado = checkOpcoes(matJogador);
-                            deuVelha = jogoEncerrado;
-                        }
-                        // Passa a vez para o outro jogador se o jogo não foi encerrado
-                        if (jogoEncerrado == false) {
-                            if (numJogador == -1) {
-                                numJogador = -2;
-                            } else {
-                                numJogador = -1;
-                            }
+                            deuVelha = checkOpcoes(matJogador);
+                            jogoEncerrado = deuVelha;
                         }
                     }
                 }
