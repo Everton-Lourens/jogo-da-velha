@@ -29,31 +29,34 @@ import java.util.Scanner;
 public class meuvetor {
 
     public static void main(String[] args) {
+        System.out.println("\n===== Jogo da Velha =====");
+        System.out.println("Iniciando o jogo...");
+        iniciarJogo();
+    }
+
+    public static void iniciarJogo() {
         // Inicializando scanner
         Scanner sc = new Scanner(System.in);
-        System.out.println("\n===== Jogo da Velha =====");
         // Inicializando matriz padrão do jogo para o jogador escolher os números
-        int matJogador[][] = {
+        int matJogo[][] = {
                 { 1, 2, 3 },
                 { 4, 5, 6 },
                 { 7, 8, 9 },
         };
-
+        // Iniciando variáveis
         int i, j;
         // Controle de rodada
         int numJogador = -1;
         boolean jogoEncerrado = false;
         boolean deuVelha = false;
-
-        mostrarJogo(matJogador);
-
+        // Mostrando todas as opções de jogadas
+        mostrarJogo(matJogo);
         // Loop para o jogo acontecer
-        for (i = 0; i < matJogador.length; i++) {
-            for (j = 0; j < matJogador[0].length; j++) {
+        for (i = 0; i < matJogo.length; i++) {
+            for (j = 0; j < matJogo[0].length; j++) {
 
-                for (i = 0; i < matJogador.length; i++) {
-                    for (j = 0; j < matJogador[0].length; j++) {
-
+                for (i = 0; i < matJogo.length; i++) {
+                    for (j = 0; j < matJogo[0].length; j++) {
                         // Conferindo se o jogo já foi encerrado (deu velha ou não resta opções para
                         // jogar)
                         if (jogoEncerrado == true) {
@@ -63,8 +66,8 @@ public class meuvetor {
                             } else {
                                 System.out.println("===>>> JOGADOR " + (numJogador * -1) + " VENCEU! <<<===");
                             }
-                            i = matJogador.length;
-                            j = matJogador.length;
+                            i = matJogo.length;
+                            j = matJogo.length;
                             sc.close();
                             break;
                         }
@@ -75,26 +78,26 @@ public class meuvetor {
 
                         int inputJogador = sc.nextInt();
 
-                        for (int x = 0; x < matJogador.length; x++) {
-                            for (int y = 0; y < matJogador[0].length; y++) {
+                        for (int x = 0; x < matJogo.length; x++) {
+                            for (int y = 0; y < matJogo[0].length; y++) {
                                 // Se o input do jogador for igual ao número da matriz, coloca -1 para o jogador
                                 // 1 ou -2 para marcar
                                 // a posição escolhida
-                                if (inputJogador == matJogador[x][y]) { // Jogador 1 faz sua jogada:
+                                if (inputJogador == matJogo[x][y]) { // Jogador 1 faz sua jogada:
                                     if (numJogador == -1) {
                                         // A escolha do primeiro jogador é marcada com '-1' na matriz
-                                        matJogador[x][y] = -1;
+                                        matJogo[x][y] = -1;
                                         // Confere se o jogo foi vencido pelo jogador atual
-                                        jogoEncerrado = conferirJogo(matJogador, numJogador);
+                                        jogoEncerrado = conferirJogo(matJogo, numJogador);
                                         if (jogoEncerrado == false) {
                                             // passa a vez para o próximo jogador se o jogo não foi encerrado
                                             numJogador = -2;
                                         }
                                     } else if (numJogador == -2) { // Jogador 2 faz sua jogada:
                                         // A escolha do primeiro jogador é marcada com '-2' na matriz
-                                        matJogador[x][y] = -2;
+                                        matJogo[x][y] = -2;
                                         // Confere se o jogo foi vencido pelo jogador atual
-                                        jogoEncerrado = conferirJogo(matJogador, numJogador);
+                                        jogoEncerrado = conferirJogo(matJogo, numJogador);
                                         if (jogoEncerrado == false) {
                                             // passa a vez para o próximo jogador se o jogo não foi encerrado
                                             numJogador = -1;
@@ -106,15 +109,13 @@ public class meuvetor {
                                     i--;
                                     j--;
                                 }
-
                             }
-
                         }
                         // Mostrando a matriz com a escolha do último jogador
-                        mostrarJogo(matJogador);
+                        mostrarJogo(matJogo);
                         if (jogoEncerrado == false) {
                             // Confere se ainda há opções para jogar ou se deu velha
-                            deuVelha = checkOpcoes(matJogador);
+                            deuVelha = checkOpcoes(matJogo);
                             jogoEncerrado = deuVelha;
                         }
                     }
@@ -124,19 +125,19 @@ public class meuvetor {
         sc.close();
     }
 
-    public static boolean conferirJogo(int matJogador[][], int numJogador) {
+    public static boolean conferirJogo(int matJogo[][], int numJogador) {
         boolean jogoEncerrado = false;
         if (jogoEncerrado == false) {
-            jogoEncerrado = checkDiagEsquerDirei(matJogador, numJogador);
+            jogoEncerrado = checkDiagEsquerDirei(matJogo, numJogador);
         }
         if (jogoEncerrado == false) {
-            jogoEncerrado = checkDiagDireiEsquer(matJogador, numJogador);
+            jogoEncerrado = checkDiagDireiEsquer(matJogo, numJogador);
         }
         if (jogoEncerrado == false) {
-            jogoEncerrado = checkHorizEsquerDirei(matJogador, numJogador);
+            jogoEncerrado = checkHorizEsquerDirei(matJogo, numJogador);
         }
         if (jogoEncerrado == false) {
-            jogoEncerrado = checkVertEsquerDirei(matJogador, numJogador);
+            jogoEncerrado = checkVertEsquerDirei(matJogo, numJogador);
         }
         return jogoEncerrado;
     }
