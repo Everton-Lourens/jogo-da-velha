@@ -26,7 +26,7 @@ Desde já, agradeço.
 
 import java.util.Scanner;
 
-public class meuvetor {
+public class JogoDaVelha {
 
     public static void main(String[] args) {
         System.out.println("\n===== Jogo da Velha =====");
