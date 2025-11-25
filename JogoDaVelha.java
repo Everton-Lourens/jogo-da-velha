@@ -4,23 +4,6 @@
 // https://github.com/Everton-Lourens/jogo-da-velha
 // OBS::: NÃO FOI utilizado IA em hipótese alguma, pode olhar os "commits" enviados ao github.
 //////////////////
-/*
-Olá, professor!
-Fiz todo o código sem auxílio de IA, pode olhar os commits no meu GitHub:
-https://github.com/Everton-Lourens/jogo-da-velha
-
-Obs:: Na reunião com Osvaldo, ele falou para que eu mostrasse ao senhor que já sei programar, afinal eu já
-dei essa aula antes, porém não foi possível dispensar sua aula esse semestre pelo fato de ter apenas
-80 horas no curso anterior e sua aula ter 90 horas.
-Deixei de ir pra sua aula achando que já poderia dispensar ela, mas me dei
-mal...
-Se o senhor quiser considerar o fato que sei programar para não me reprovar
-por falta, vou ficar feliz, caso contrário, eu entendo não ser possível.
-
-Obs2:: Eu trabalho como motoboy e pago minha própria faculdade, jamais iria
-reprovar propositalmente e jogar dinheiro fora.
-Desde já, agradeço.
- */
 
 //package vetores;
 
@@ -52,69 +35,59 @@ public class JogoDaVelha {
         // Mostrando todas as opções de jogadas
         mostrarJogo(matJogo);
         // Loop para o jogo acontecer
+        
 
-        for (i = 0; i < matJogo.length; i++) {
-            for (j = 0; j < matJogo[0].length; j++) {
-                // Conferindo se o jogo já foi encerrado (deu velha ou não resta opções para
-                // jogar)
-                if (jogoEncerrado == true) {
-                    System.out.println("Jogo encerrado! Não há mais jogadas possíveis.");
-                    if (deuVelha == true) {
-                        System.out.println("===>>> DEU VELHA! <<<===");
-                    } else {
-                        System.out.println("===>>> JOGADOR " + (numJogador * -1) + " VENCEU! <<<===");
-                    }
-                    i = matJogo.length;
-                    j = matJogo.length;
-                    sc.close();
-                    break;
-                }
+        while (jogoEncerrado == false) {
+            System.out.println("========================");
+            System.out.println("É a vez do jogador " + (numJogador * -1));
+            System.out.println("Escolha um número:");
 
-                System.out.println("========================");
-                System.out.println("É a vez do jogador " + (numJogador * -1));
-                System.out.println("Escolha um número:");
+            int inputJogador = sc.nextInt();
 
-                int inputJogador = sc.nextInt();
-
-                for (int x = 0; x < matJogo.length; x++) {
-                    for (int y = 0; y < matJogo[0].length; y++) {
-                        // Se o input do jogador for igual ao número da matriz, coloca -1 para o jogador
-                        // 1 ou -2 para marcar
-                        // a posição escolhida
-                        if (inputJogador == matJogo[x][y]) { // Jogador 1 faz sua jogada:
-                            if (numJogador == -1) {
-                                // A escolha do primeiro jogador é marcada com '-1' na matriz
-                                matJogo[x][y] = -1;
-                                // Confere se o jogo foi vencido pelo jogador atual
-                                jogoEncerrado = conferirJogo(matJogo, numJogador);
-                                if (jogoEncerrado == false) {
-                                    // passa a vez para o próximo jogador se o jogo não foi encerrado
-                                    numJogador = -2;
-                                }
-                            } else if (numJogador == -2) { // Jogador 2 faz sua jogada:
-                                // A escolha do primeiro jogador é marcada com '-2' na matriz
-                                matJogo[x][y] = -2;
-                                // Confere se o jogo foi vencido pelo jogador atual
-                                jogoEncerrado = conferirJogo(matJogo, numJogador);
-                                if (jogoEncerrado == false) {
-                                    // passa a vez para o próximo jogador se o jogo não foi encerrado
-                                    numJogador = -1;
-                                }
+            for (int x = 0; x < matJogo.length; x++) {
+                for (int y = 0; y < matJogo[0].length; y++) {
+                    // Se o input do jogador for igual ao número da matriz, coloca -1 para o jogador
+                    // 1 ou -2 para marcar
+                    // a posição escolhida
+                    if (inputJogador == matJogo[x][y]) { // Jogador 1 faz sua jogada:
+                        if (numJogador == -1) {
+                            // A escolha do primeiro jogador é marcada com '-1' na matriz
+                            matJogo[x][y] = -1;
+                            // Confere se o jogo foi vencido pelo jogador atual
+                            jogoEncerrado = conferirJogo(matJogo, numJogador);
+                            if (jogoEncerrado == false) {
+                                // passa a vez para o próximo jogador se o jogo não foi encerrado
+                                numJogador = -2;
                             }
-                        } else {
-                            // Não permite o jogo encerrar caso o jogador escolha um número inválido ou uma
-                            // letra
-                            i--;
-                            j--;
+                        } else if (numJogador == -2) { // Jogador 2 faz sua jogada:
+                            // A escolha do primeiro jogador é marcada com '-2' na matriz
+                            matJogo[x][y] = -2;
+                            // Confere se o jogo foi vencido pelo jogador atual
+                            jogoEncerrado = conferirJogo(matJogo, numJogador);
+                            if (jogoEncerrado == false) {
+                                // passa a vez para o próximo jogador se o jogo não foi encerrado
+                                numJogador = -1;
+                            }
                         }
                     }
                 }
-                // Mostrando a matriz com a escolha do último jogador
-                mostrarJogo(matJogo);
-                if (jogoEncerrado == false) {
-                    // Confere se ainda há opções para jogar ou se deu velha
-                    deuVelha = checkOpcoes(matJogo);
-                    jogoEncerrado = deuVelha;
+            }
+            // Mostrando a matriz com a escolha do último jogador
+            mostrarJogo(matJogo);
+            if (jogoEncerrado == false) {
+                // Confere se ainda há opções para jogar ou se deu velha
+                deuVelha = checkOpcoes(matJogo);
+                jogoEncerrado = deuVelha;
+            }
+
+            if (jogoEncerrado == true) {
+                // Conferindo se o jogo já foi encerrado (deu velha ou não resta opções para
+                // jogar)
+                System.out.println("Jogo encerrado! Não há mais jogadas possíveis.");
+                if (deuVelha == true) {
+                    System.out.println("===>>> DEU VELHA! <<<===");
+                } else {
+                    System.out.println("===>>> JOGADOR " + (numJogador * -1) + " VENCEU! <<<===");
                 }
             }
         }
